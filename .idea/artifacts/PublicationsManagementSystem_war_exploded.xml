@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="PublicationsManagementSystem:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/PublicationsManagementSystem_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PublicationsManagementSystem" />
+        </element>
+      </element>
+      <element id="library" level="module" name="postgresql-9.4-1203.jdbc41.jar" module-name="PublicationsManagementSystem" />
+      <element id="javaee-facet-resources" facet="PublicationsManagementSystem/web/Web" />
+      <element id="javaee-facet-resources" facet="PublicationsManagementSystem/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

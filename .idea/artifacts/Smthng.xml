@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="javafx-preloader" name="Smthng">
+    <output-path>$PROJECT_DIR$/out/artifacts/Smthng</output-path>
+    <root id="archive" name="Smthng.jar">
+      <element id="module-output" name="PublicationsManagementSystem" />
+      <element id="javaee-facet-resources" facet="PublicationsManagementSystem/web/Web" />
+    </root>
+  </artifact>
+</component>
