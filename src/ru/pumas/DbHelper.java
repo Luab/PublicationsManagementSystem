@@ -456,12 +456,12 @@ public class DbHelper {
 	// return subjects.toArray(new Subject[subjects.size()]);
 	// }
 
-	public static ResultSet getPublicationsSet() throws SQLException {
+	public static PublicationSet getPublicationSet() throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				new String[] { DbContract.PublicationsTable.TABLE_NAME },
 				null);
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		return preparedStatement.executeQuery();
+		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
 	public static PublicationSet searchPublicationsByTitleSubstring(String s)
@@ -602,10 +602,29 @@ public class DbHelper {
 
 	public static PublicationSet searchPublicationSet(String s)
 			throws SQLException {
-		String sql = selectWhatFromWhere(null,
-				DbContract.PublicationsTable.TABLE_NAME,
+		/*
+		 * SELECT P.publication_id, ts_headline(P.publication_title,q) as
+		 * Publication_title, P.datePublished, P.dateUpdated,
+		 * ts_headline(P.description,q) as Publication_description,
+		 * ts_headline(authors_for_publicationID(P.publication_ID),q) as
+		 * Publication_authors, P.venue_id, ts_rank_cd(P.searchable, q) AS rank
+		 * FROM publication AS p, to_tsquery('XXX') AS q WHERE P.searchable @@ q
+		 * ORDER BY rank DESC LIMIT 50 ;
+		 */
+
+		String sql = selectWhatFromWhere(new String[] {
+				DbContract.PublicationsTable.COLUMN_ID,
+				"ts_headline(" + DbContract.PublicationsTable.COLUMN_TITLE
+						+ ",q) AS " + DbContract.PublicationsTable.COLUMN_TITLE,
+				DbContract.PublicationsTable.COLUMN_DATE_CREATED,
+				DbContract.PublicationsTable.COLUMN_DATE_UPDATED,
+				DbContract.PublicationsTable.COLUMN_VENUE_ID
+		}, new String[] { DbContract.PublicationsTable.TABLE_NAME,
+				"plainto_tsquery('english', ?) AS q" },
 				DbContract.PublicationsTable.COLUMN_SEARCHABLE
-						+ " @@ plainto_tsquery('English', ?)");
+						+ "q ORDER BY ts_rank_cd("
+						+ DbContract.PublicationsTable.COLUMN_SEARCHABLE
+						+ ",q)");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, s);
 		return new PublicationSet(preparedStatement.executeQuery());
