@@ -45,7 +45,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+      <a class="navbar-brand" href="Main.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -55,13 +55,16 @@
         <ul class="nav" id="side-menu">
             <!-- /input-group -->
           <li>
-            <a href="main.jsp"><i class="fa fa-dashboard fa-fw"></i>Publication search</a>
+            <a href="Main.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
-            <a href="authors.jsp"><i class="fa fa-table fa-fw"></i>Authors</a>
+            <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="subject.jsp"><i class="fa fa-edit fa-fw"></i> Subjects</a>
+            <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+          </li>
+          <li>
+            <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
           <!-- /.nav-second-level -->
         </ul>
@@ -90,36 +93,22 @@
               <div class="col-lg-6">
                 <form role="form">
                   <div class="form-group">
-                    <label>Text Input</label>
-                    <input class="form-control">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <label>Search</label>
+                    <input class="form-control" placeholder="Enter request">
                   </div>
                   <div class="form-group">
-                    <label>Text Input with Placeholder</label>
-                    <input class="form-control" placeholder="Enter text">
-                  </div>
-                  <div class="form-group">
-                    <label>Selects</label>
-                    <select class="form-control">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Multiple Selects</label>
-                    <select multiple class="form-control">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                    <label>Choose search destination</label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox">Authors
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox">Publications
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox">Subjects
+                    </label>
                   </div>
                   <button type="submit" class="btn btn-default">Submit Button</button>
-                  <button type="reset" class="btn btn-default">Reset Button</button>
                 </form>
               </div>
               <!-- /.col-lg-6 (nested) -->

@@ -21,23 +21,23 @@
   <title>Publication Managment System</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
   <!-- DataTables CSS -->
-  <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <link href="../css/plugins/dataTables.bootstrap.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/tem.css" type="text/css" />
-  <link rel="stylesheet" href="css/quake.css" type="text/css" />
-  <script src="js/jquery-1.11.3.min.js"></script>
-  <script src="js/tem.js"></script>
+  <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/tem.css" type="text/css" />
+  <link rel="stylesheet" href="../css/quake.css" type="text/css" />
+  <script src="../js/jquery-1.11.3.min.js"></script>
+  <script src="../js/tem.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -222,16 +222,16 @@
 <!-- /#wrapper -->
 
 <!-- jQuery Version 1.11.0 -->
-<script src="js/jquery-1.11.0.js"></script>
+<script src="../js/jquery-1.11.0.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="js/sb-admin-2.js"></script>
+<script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>

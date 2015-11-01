@@ -101,122 +101,66 @@
     <!-- /.navbar-static-side -->
   </nav>
 
-
+  <%
+    Integer i=0;
+  %>
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <%
-                  Integer i;
-                  String par = request.getParameter("id");
-                  if (par == ""){
-                    response.sendRedirect("error.jsp?from=\"No such publication\"");
-                    i=1;
-                  }
-                  else {
-                    i = Integer.parseInt(par);
-                  }
-                  Publication publ = DbHelper.getPublicationById(i);
-                  %>
-        <h1 class="page-header"><%=publ.getTitle()%></h1>
+        <h1 class="page-header">Add publication</h1>
       </div>
-      <!-- /.col-lg-12 -->
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <p class="form-control-static"><%=publ.getDescription()%></p>
-
-      <label>DOI</label>
-      <p class="form-control-static"><%=publ.getDoi()%></p>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              Subjects
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <%
-                    Integer z = 1;
-                    ResultSet subjects = DbHelper.getSubjectsByPublicationIdSet(i);
-                    while (subjects.next()){
-                      Subject subj = Subject.from(subjects);
-                      Integer sid = subj.getId();
-                  %>
-                  <tr>
-                    <td><%out.print(z);%></td>
-                    <td><a href="subject.jsp?id=<%=sid%>"><%=subj.getName()%></a></td>
-                  </tr>
-                  <%
-                      z++;
-                    }
-                  %>
-                  </tbody>
-                </table>
+  </div><div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Basic Form Elements
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <form role="form">
+              <div class="form-group">
+                <label>Publication Title</label>
+                <input class="form-control" placeholder="Enter title">
               </div>
-              <%if(publ.getVenue()!= null){
-              %>
-              <label>Venue</label>
-              <p class="form-control-static"><%=publ.getVenue().getName()%></p>
-              <%}%>
-
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Authors
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <div class="123">
+                <label>Authors</label>
+                <input class="form-control" placeholder="Enter author name">
+              </div>
+              <div class="form-group">
+                <label>Subjects</label>
+                <input class="form-control" placeholder="Enter subject">
+              </div>
+              <div class="form-group">
+                <label>DOI</label>
+                <input class="form-control" placeholder="Enter doi">
+              </div>
+              <div class="form-group">
+                <label>Venue</label>
+                <input class="form-control" placeholder="Enter venue">
+              </div>
+              <button type="submit" class="btn btn-default" onclick="">Submit Button</button>
+            </form>
           </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                  Integer x = 1;
-                  Integer aid=0;
-                  ResultSet authors = DbHelper.getAuthorsByPublicationIdSet(i);
-                  while (authors.next()){
-                    Author auth = Author.from(authors);
-                    aid = auth.getId();                %>
-                <tr>
-                  <td><%out.print(x);%></td>
-                  <td><a href="Author.jsp?id=<%=aid%>"><%=auth.getName()%></a> </td>
-                </tr>
-                <%
-                    x++;
-                  }
-                %>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
           </div>
-          <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
+        <!-- /.row (nested) -->
       </div>
-      <!-- /.col-lg-6 -->
-
+      <!-- /.panel-body -->
     </div>
-    <!-- /.row -->
+    <!-- /.panel -->
   </div>
-  <!-- /#page-wrapper -->
+  <!-- /.col-lg-12 -->
+</div>
+  <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
@@ -234,16 +178,6 @@
 <script src="js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-  $(document).ready(function() {
-    $('#dataTables-example').dataTable();
-  });
-  $('.table > td').click(function() {
-    alert("OH MY GOD THAT'S SOME FANCY SHIT!")
-  });
-</script>
-
 </body>
 
 </html>
-

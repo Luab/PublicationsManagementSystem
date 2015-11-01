@@ -21,23 +21,23 @@
   <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
   <!-- DataTables CSS -->
-  <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet">
+  <link href="../css/plugins/dataTables.bootstrap.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/tem.css" type="text/css" />
-  <link rel="stylesheet" href="css/quake.css" type="text/css" />
-  <script src="js/jquery-1.11.3.min.js"></script>
-  <script src="js/tem.js"></script>
+  <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/tem.css" type="text/css" />
+  <link rel="stylesheet" href="../css/quake.css" type="text/css" />
+  <script src="../js/jquery-1.11.3.min.js"></script>
+  <script src="../js/tem.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -63,7 +63,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+      <a class="navbar-brand" href="Main.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -73,15 +73,17 @@
         <ul class="nav" id="side-menu">
           <!-- /input-group -->
           <li>
-            <a href="main.jsp"><i class="fa fa-dashboard fa-fw"></i>Publication search</a>
+            <a href="Main.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
-            <a href="authors.jsp"><i class="fa fa-table fa-fw"></i>Authors</a>
+            <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="subject.jsp"><i class="fa fa-edit fa-fw"></i> Subjects</a>
+            <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
           </li>
-          <!-- /.nav-second-level -->
+          <li>
+            <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+          </li>          <!-- /.nav-second-level -->
         </ul>
       </div>
       <!-- /.sidebar-collapse -->
@@ -110,8 +112,7 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>Password</th>
-                  <th>Username</th>
+                  <th>Title</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -123,20 +124,15 @@
         {
           Publication publ = Publication.from(rs);
           i++;
+          Integer aid = publ.getId();
                 %>
-                <tr data-href="Publication.jsp?id">
-                  <td><%=publ.getId()%></td>
-                  <td><%=publ.getTitle()%></td>
-                  <td>
-                    <img class="shake-me" src="img/tem.png"/>
-                    <audio loop>
-                      <source src="audio/dogsong.ogg" />
-                    </audio></td>
+                <tr>
+                  <td><%=i%></td>
+                  <td><a href="Publication.jsp?id=<%=aid%>"><%=publ.getTitle()%></a></td>
                 </tr>
-<%
-    i++;
-  }
-  %>
+                <%
+              }
+          %>
                 </tbody>
               </table>
             </div>
@@ -157,16 +153,16 @@
 <!-- /#wrapper -->
 
 <!-- jQuery Version 1.11.0 -->
-<script src="js/jquery-1.11.0.js"></script>
+<script src="../js/jquery-1.11.0.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="js/sb-admin-2.js"></script>
+<script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>

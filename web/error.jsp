@@ -21,7 +21,7 @@ Here's some info:
 <%=request.getParameter("from")%>
 <img class="shake-me" src="img/tem.png"/>
 <audio loop>
-  <source src="audio/dogsong.ogg" />
+  <source src="audio/dogsong.ogg">
 </audio>
 </body>
 </html>
