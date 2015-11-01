@@ -36,21 +36,52 @@ public class DbContract {
 		static final String TABLE_NAME = "publication";
 
 		public static final String COLUMN_ID = "publication_id";
+		public static final String FULL_COLUMN_ID = TABLE_NAME + "."
+				+ COLUMN_ID;
 		public static final String COLUMN_DOI = "doi";
+		public static final String FULL_COLUMN_DOI = TABLE_NAME + "."
+				+ COLUMN_DOI;
 		public static final String COLUMN_LINK = "link";
+		public static final String FULL_COLUMN_LINK = TABLE_NAME + "."
+				+ COLUMN_LINK;
 		public static final String COLUMN_DESCRIPTION = "description";
+		public static final String FULL_COLUMN_DESCRIPTION = TABLE_NAME + "."
+				+ COLUMN_DESCRIPTION;
 		public static final String COLUMN_DATE_CREATED = "datePublished";
+		public static final String FULL_COLUMN_DATE_CREATED = TABLE_NAME + "."
+				+ COLUMN_DATE_CREATED;
 		public static final String COLUMN_DATE_UPDATED = "dateUpdated";
+		public static final String FULL_COLUMN_DATE_UPDATED = TABLE_NAME + "."
+				+ COLUMN_DATE_UPDATED;
 		public static final String COLUMN_VENUE_ID = "venue_ID";
+		public static final String FULL_COLUMN_VENUE_ID = TABLE_NAME + "."
+				+ COLUMN_VENUE_ID;
 		public static final String COLUMN_TITLE = "publication_title";
+		public static final String FULL_COLUMN_TITLE = TABLE_NAME + "."
+				+ COLUMN_TITLE;
 		public static final String COLUMN_NUMBER_OF_AUTHORS = "number_of_authors";
+		public static final String FULL_COLUMN_NUMBER_OF_AUTHORS = TABLE_NAME
+				+ "." + COLUMN_NUMBER_OF_AUTHORS;
+
+		public static final String ALL_COLUMNS = DbHelper
+				.commaSeparated(new String[] { FULL_COLUMN_ID, FULL_COLUMN_DOI,
+						FULL_COLUMN_LINK, FULL_COLUMN_DESCRIPTION,
+						FULL_COLUMN_DATE_CREATED,
+						FULL_COLUMN_DATE_UPDATED,
+						FULL_COLUMN_VENUE_ID, FULL_COLUMN_TITLE,
+						FULL_COLUMN_NUMBER_OF_AUTHORS
+				}, null);
 	}
 
 	static final class PublicationsSubjectTable {
 		static final String TABLE_NAME = "written_on";
 
 		public static final String COLUMN_PUBLICATION_ID = "publication_id";
+		public static final String FULL_COLUMN_PUBLICATION_ID = TABLE_NAME + "."
+				+ COLUMN_PUBLICATION_ID;
 		public static final String COLUMN_SUBJECT_ID = "subject_id";
+		public static final String FULL_COLUMN_SUBJECT_ID = TABLE_NAME + "."
+				+ COLUMN_SUBJECT_ID;
 	}
 
 	static final class SubjectsTable {
