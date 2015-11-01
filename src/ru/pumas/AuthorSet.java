@@ -7,11 +7,11 @@ public class AuthorSet {
 
 	ResultSet rs;
 
-	boolean next() throws SQLException {
+	public boolean next() throws SQLException {
 		return rs.next();
 	}
 
-	Author getAuthor() throws SQLException {
+	public Author getAuthor() throws SQLException {
 		return Author.from(rs);
 	}
 
