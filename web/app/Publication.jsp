@@ -72,7 +72,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="Search.jsp">Publication Managment System</a>
+      <a class="navbar-brand" href="search.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -82,7 +82,7 @@
         <ul class="nav" id="side-menu">
           <!-- /input-group -->
           <li>
-            <a href="Search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
+            <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
             <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
@@ -116,8 +116,9 @@
                     i = Integer.parseInt(par);
                   }
                   Publication publ = DbHelper.getPublicationById(i);
+                  String head = publ.getTitle();
                   %>
-        <h1 class="page-header"><%=publ.getTitle()%></h1>
+        <h1 class="page-header"><%=head%></h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -196,7 +197,7 @@
                     aid = auth.getId();                %>
                 <tr>
                   <td><%out.print(x);%></td>
-                  <td><a href="Author.jsp?id=<%=aid%>"><%=auth.getName()%></a> </td>
+                  <td><a href="author.jsp?id=<%=aid%>"><%=auth.getName()%></a> </td>
                 </tr>
                 <%
                     x++;

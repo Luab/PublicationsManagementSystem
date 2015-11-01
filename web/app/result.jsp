@@ -63,7 +63,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="Search.jsp">Publication Managment System</a>
+      <a class="navbar-brand" href="search.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -73,7 +73,7 @@
         <ul class="nav" id="side-menu">
           <!-- /input-group -->
           <li>
-            <a href="Search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
+            <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
             <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
@@ -90,7 +90,9 @@
     </div>
     <!-- /.navbar-static-side -->
   </nav>
-
+  <%
+    String search = request.getParameter("request");
+  %>
 
   <div id="page-wrapper">
     <div class="row">
@@ -118,8 +120,13 @@
                 <tbody>
                 <%
                   int i=0;
-
-                  ResultSet rs = DbHelper.getPublicationsSet();
+                  ResultSet rs;
+                  if(search==null) {
+                    rs = DbHelper.getPublicationsSet();
+                  }
+                  else{
+                    rs = DbHelper.searchPublicationsByTitleSubstring(search);
+                  }
                   while(rs.next())
         {
           Publication publ = Publication.from(rs);
@@ -128,7 +135,7 @@
                 %>
                 <tr>
                   <td><%=i%></td>
-                  <td><a href="Publication.jsp?id=<%=aid%>"><%=publ.getTitle()%></a></td>
+                  <td><a href="publication.jsp?id=<%=aid%>"><%=publ.getTitle()%></a></td>
                 </tr>
                 <%
               }

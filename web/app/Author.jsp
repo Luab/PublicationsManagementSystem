@@ -72,7 +72,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="Search.jsp">Publication Managment System</a>
+      <a class="navbar-brand" href="search.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -82,7 +82,7 @@
         <ul class="nav" id="side-menu">
           <!-- /input-group -->
           <li>
-            <a href="Search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
+            <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
             <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
@@ -103,7 +103,7 @@
 
 
   <div id="page-wrapper">
-    <div class="row">
+    < class="row">
       <div class="col-lg-12">
         <%
           Integer i;
@@ -120,8 +120,6 @@
         <h1 class="page-header"><%=auth.getName()%></h1>
       </div>
       <!-- /.col-lg-12 -->
-    </div>
-            </div>
             <div class="row">
               <div class="col-lg-6">
                 <div class="panel panel-default">
@@ -142,13 +140,13 @@
                         <%
                           Integer x = 1;
                           Integer aid=0;
-                          ResultSet publications = DbHelper.ge; //TODO: Fill it in
+                          ResultSet publications = DbHelper.getPublicationSetByAuthorId(i); //TODO: Fill it in
                           while (publications.next()){
                             Publication publ = Publication.from(publications);
                             aid = publ.getId();                %>
                         <tr onclick="Publication.jsp" method="post">
                           <td><%out.print(x);%></td>
-                          <td><a href="Publication.jsp?id=<%=aid%>"><%=publ.getTitle()%></a> </td>
+                          <td><a href="publication.jsp?id=<%=aid%>"><%=publ.getTitle()%></a> </td>
                         </tr>
                         <%
                             x++;
