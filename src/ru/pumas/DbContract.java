@@ -98,7 +98,11 @@ public class DbContract {
 		public static final String TABLE_NAME = "venue";
 
 		public static final String COLUMN_ID = "venue_id";
+		public static final String FULL_COLUMN_ID = TABLE_NAME + "."
+				+ COLUMN_ID;
 		public static final String COLUMN_NAME = "venue_name";
+		public static final String FULL_COLUMN_NAME = TABLE_NAME + "."
+				+ COLUMN_ID;
 	}
 
 	static final class KeywordsTable {

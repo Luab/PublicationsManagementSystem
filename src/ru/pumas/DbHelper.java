@@ -680,9 +680,9 @@ public class DbHelper {
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
 				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.VenuesTable.TABLE_NAME },
-				DbContract.PublicationsTable.COLUMN_VENUE_ID + " = "
-						+ DbContract.VenuesTable.COLUMN_ID + " AND " +
-						DbContract.VenuesTable.COLUMN_NAME + " ILIKE ?");
+				DbContract.PublicationsTable.FULL_COLUMN_VENUE_ID + " = "
+						+ DbContract.VenuesTable.FULL_COLUMN_ID + " AND " +
+						DbContract.VenuesTable.FULL_COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());
