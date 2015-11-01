@@ -19,12 +19,12 @@ public class Publication {
 	public Publication() {
 	}
 
-	public AuthorSet getAuthorSet() throws SQLException {
-		return DbHelper.getAuthorsByPublicationIdSet(id);
+	public AuthorSet getAuthorSet(int limit, int pageNumber) throws SQLException {
+		return DbHelper.getAuthorsByPublicationIdSet(id, limit, pageNumber);
 	}
 	
-	public SubjectSet getSubjectSet() throws SQLException {
-		return DbHelper.getSubjectsByPublicationIdSet(id);
+	public SubjectSet getSubjectSet(int limit, int pageNumber) throws SQLException {
+		return DbHelper.getSubjectsByPublicationIdSet(id, limit, pageNumber);
 	}
 	
 	public int getId() {
