@@ -15,7 +15,7 @@
 <head>
     <title>hOi!</title>
 </head>
-<body>
+<body font="Comic Sans">
 Smtheng went roooong :c
 Here's some info:
 <%=request.getParameter("from")%>

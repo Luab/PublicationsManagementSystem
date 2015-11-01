@@ -157,7 +157,7 @@
                                     <td>
                                         <%
                                             while (auth.next()) {
-                                                Author author = auth.getAuthor;
+                                                Author author = auth.getAuthor();
                                                 Integer aid = author.getId();
                                         %>
                                         <a href="author.jsp?id=<%=aid%>"><%=author.getName()%>

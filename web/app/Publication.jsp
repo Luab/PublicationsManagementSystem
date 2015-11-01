@@ -46,6 +46,7 @@
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
 
+
     </script>
     <script type="text/javascript"
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -130,7 +131,7 @@
       %>
             <label>DOI</label>
 
-            <p class="form-control-static"><a data-href="www.doi.org/<%=doi.split(":(?=[^:]*$)(.*)")[2]%>" <%=doi%>
+            <p class="form-control-static"><a data-href="www.doi.org/<%=doi.split(":(?=[^:]*$)(.*)")[1]%>" <%=doi%>
             </p>
                 <%}%>
                 <%if(publ.getVenue()!= null){
@@ -161,7 +162,7 @@
                                         Integer z = 1;
                                         SubjectSet subjects = DbHelper.getSubjectsByPublicationIdSet(i);
                                         while (subjects.next()) {
-                                            Subject subj = subjects.getSubject;
+                                            Subject subj = subjects.getSubject();
                                             Integer sid = subj.getId();
                                     %>
                                     <tr>
@@ -198,9 +199,9 @@
                                                 <%
                                                     Integer x = 1;
                                                     Integer aid = 0;
-                                                    ResultSet authors = DbHelper.getAuthorsByPublicationIdSet(i);
+                                                    AuthorSet authors = DbHelper.getAuthorsByPublicationIdSet(i);
                                                     while (authors.next()) {
-                                                        Author auth = Author.from(authors);
+                                                        Author auth = authors.getAuthor();
                                                         aid = auth.getId(); %>
                                                 <tr>
                                                     <td><%out.print(x);%></td>
@@ -214,43 +215,44 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!-- /.table-responsive -->
                                     </div>
-                                    <!-- /.panel-body -->
+                                    <!-- /.table-responsive -->
                                 </div>
-                                <!-- /.panel -->
+                                <!-- /.panel-body -->
                             </div>
-                            <!-- /.col-lg-6 -->
-
+                            <!-- /.panel -->
                         </div>
-                        <!-- /.row -->
+                        <!-- /.col-lg-6 -->
+
                     </div>
-                    <!-- /#page-wrapper -->
-
+                    <!-- /.row -->
                 </div>
-                <!-- /#wrapper -->
+                <!-- /#page-wrapper -->
 
-                <!-- jQuery Version 1.11.0 -->
-                <script src="../js/jquery-1.11.0.js"></script>
+            </div>
+            <!-- /#wrapper -->
 
-                <!-- Bootstrap Core JavaScript -->
-                <script src="../js/bootstrap.min.js"></script>
+            <!-- jQuery Version 1.11.0 -->
+            <script src="../js/jquery-1.11.0.js"></script>
 
-                <!-- Metis Menu Plugin JavaScript -->
-                <script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../js/bootstrap.min.js"></script>
 
-                <!-- Custom Theme JavaScript -->
-                <script src="../js/sb-admin-2.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
+            <script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
 
-                <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-                <script>
-                    $(document).ready(function () {
-                        $('#dataTables-example').dataTable();
-                    });
-                    $('.table > td').click(function () {
-                        alert("OH MY GOD THAT'S SOME FANCY SHIT!")
-                    });
-                </script>
+            <!-- Custom Theme JavaScript -->
+            <script src="../js/sb-admin-2.js"></script>
+
+            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+            <script>
+                $(document).ready(function () {
+                    $('#dataTables-example').dataTable();
+                });
+                $('.table > td').click(function () {
+                    alert("OH MY GOD THAT'S SOME FANCY SHIT!")
+                });
+            </script>
 
 </body>
 
