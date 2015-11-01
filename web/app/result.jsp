@@ -113,7 +113,7 @@
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Publications
+                        Publications for <%=search%>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -123,6 +123,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
+                                    <th>Preview</th>
                                     <th>Author</th>
                                 </tr>
                                 </thead>
@@ -153,6 +154,8 @@
                                     <td><%=i%>
                                     </td>
                                     <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getTitle()%>
+                                    </a></td>
+                                    <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getDescription()%>
                                     </a></td>
                                     <td>
                                         <%
