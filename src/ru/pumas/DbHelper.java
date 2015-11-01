@@ -500,7 +500,7 @@ public class DbHelper {
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				sql);
 		preparedStatement.setInt(1, id);
-		return (PublicationSet) preparedStatement.executeQuery();
+		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
 	public static PublicationSet getPublicationSetBySubjectId(int id)
@@ -698,6 +698,29 @@ public class DbHelper {
 		String sql = selectWhatFromWhere(null,
 				DbContract.AuthorsTable.TABLE_NAME, null);
 		return new AuthorSet(connection.createStatement().executeQuery(sql));
+	}
+
+	public static PublicationSet getRelatedPublicationsByTimeAndSubject(int id)
+			throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.PublicationsTable.TABLE_NAME
+						+ ", related_by_subject(?)",
+				DbContract.PublicationsTable.COLUMN_ID + "=id");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		return new PublicationSet(preparedStatement.executeQuery());
+	}
+
+	public static PublicationSet getRelatedPublicationsByAuthor(int id)
+			throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.PublicationsTable.TABLE_NAME
+						+ ", related_by_author(?)",
+				DbContract.PublicationsTable.COLUMN_ID
+						+ "=id");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
 }
