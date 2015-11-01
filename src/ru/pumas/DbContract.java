@@ -62,6 +62,9 @@ public class DbContract {
 		public static final String COLUMN_NUMBER_OF_AUTHORS = "number_of_authors";
 		public static final String FULL_COLUMN_NUMBER_OF_AUTHORS = TABLE_NAME
 				+ "." + COLUMN_NUMBER_OF_AUTHORS;
+		public static final String COLUMN_SEARCHABLE = "searchable";
+		public static final String FULL_COLUMN_SEARCHABLE = TABLE_NAME + "."
+				+ COLUMN_SEARCHABLE;
 
 		public static final String ALL_COLUMNS = DbHelper
 				.commaSeparated(new String[] { FULL_COLUMN_ID, FULL_COLUMN_DOI,

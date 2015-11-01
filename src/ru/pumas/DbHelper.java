@@ -7,13 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class DbHelper {
 
-	static final String DB_URL = "jdbc:postgresql://localhost:5432/student";
+	static final String DB_URL = "jdbc:postgresql://localhost:5432/psm";
 	static final String DB_USER = "student";
 	static final String DB_PASS = "student";
 
@@ -526,7 +527,7 @@ public class DbHelper {
 
 	public static int addPublication(String doi, String link,
 			Date dateCreated,
-			Date dateUpdated, int venueId, String title, String description)
+			Date dateUpdated, Integer venueId, String title, String description)
 					throws SQLException {
 
 		String sql = insertIntoValuesQuestionMarks(
@@ -544,7 +545,11 @@ public class DbHelper {
 		preparedStatement.setString(2, link);
 		preparedStatement.setDate(3, dateCreated);
 		preparedStatement.setDate(4, dateUpdated);
-		preparedStatement.setInt(5, venueId);
+		if (venueId != null) {
+			preparedStatement.setInt(5, venueId);
+		} else {
+			preparedStatement.setNull(5, Types.INTEGER);
+		}
 		preparedStatement.setString(6, title);
 		preparedStatement.setString(7, description);
 
@@ -580,8 +585,10 @@ public class DbHelper {
 			Date dateCreated,
 			Date dateUpdated, String venue, String title, String description,
 			List<String> authors, List<String> subjects) throws SQLException {
+
+		Integer venueId = venue == null ? null : getOrAddVenueId(venue);
 		int publicationId = addPublication(doi, link, dateCreated, dateUpdated,
-				getOrAddVenueId(venue), title, description);
+				venueId, title, description);
 
 		if (authors != null) {
 			for (String a : authors) {
@@ -596,6 +603,34 @@ public class DbHelper {
 			}
 		}
 		return publicationId;
+	}
+
+	public static ResultSet searchPublicationSet(String s) throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.PublicationsTable.TABLE_NAME,
+				DbContract.PublicationsTable.COLUMN_SEARCHABLE
+						+ " @@ to_tsquery(?)");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, s);
+		return preparedStatement.executeQuery();
+	}
+
+	public static ResultSet searchAuthorsBySubstring(String s) throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.AuthorsTable.TABLE_NAME,
+				DbContract.AuthorsTable.COLUMN_NAME + " ILIKE ?");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, "%" + s + "%");
+		return preparedStatement.executeQuery();
+	}
+	
+	public static ResultSet searchSubjectsBySubstring(String s) throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.SubjectsTable.TABLE_NAME,
+				DbContract.Subjects.COLUMN_NAME + " ILIKE ?");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, "%" + s + "%");
+		return preparedStatement.executeQuery();
 	}
 
 }
