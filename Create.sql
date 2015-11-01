@@ -23,7 +23,8 @@ CREATE TABLE publication (
   link              VARCHAR(255)  DEFAULT NULL,
   description       TEXT,
 number_of_authors INTEGER DEFAULT 0,
-  venue_id          INTEGER REFERENCES venue ON UPDATE CASCADE ON DELETE SET NULL
+  venue_id          INTEGER REFERENCES venue ON UPDATE CASCADE ON DELETE SET NULL,
+  searchable tsvector 
     CONSTRAINT UpdatedAfterPublished CHECK (dateUpdated >= publication.datePublished)
 );
 
@@ -39,7 +40,7 @@ CREATE TABLE written_on (
 );
 
 CREATE TABLE keyword (
-  keyword_id     INTEGER ,
+  keyword_id     SERIAL PRIMARY KEY ,
   keyword        TEXT 
 );
 
@@ -122,4 +123,44 @@ CREATE TRIGGER make_ts
     FOR EACH ROW
     EXECUTE PROCEDURE make_searchable_text();
     
- 
+CREATE OR REPLACE FUNCTION vector_text_for_publication(id INT)
+RETURNS TEXT AS $$
+DECLARE
+s TEXT;
+BEGIN
+SELECT string_agg(author_name, ' ') FROM author, authorship INTO s WHERE
+        publication_id = id AND author.author_id = authorship.author_id;
+RETURN s;
+END
+$$ LANGUAGE plpgsql;
+
+-----------------------------------------
+
+CREATE UNIQUE INDEX publicationID
+ON publication (publication_id);
+
+CREATE UNIQUE INDEX authorID
+ON author (author_id);
+
+CREATE UNIQUE INDEX venueID
+ON venue (venue_id);
+
+CREATE UNIQUE INDEX subjectID
+ON subject (subject_id);
+
+CREATE UNIQUE INDEX keyword_ID
+ON keyword (keyword_id);
+
+--------------------------------------
+
+CREATE  INDEX writtenP_ID_lookup
+ON authorship (publication_id);
+CREATE  INDEX writtenA_ID_lookup
+ON authorship (auhtor_id);
+--
+
+CREATE  INDEX authorshipP_ID_lookup
+ON authorship (publication_id);
+CREATE  INDEX authorshipA_ID_lookup
+ON authorship (auhtor_id);
+
