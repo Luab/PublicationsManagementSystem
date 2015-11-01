@@ -663,12 +663,12 @@ public class DbHelper {
 				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.PublicationsTable.TABLE_NAME,
 						DbContract.PublicationAuthorsTable.TABLE_NAME },
-				DbContract.PublicationAuthorsTable.COLUMN_PUBLICATION_ID + "=" +
-						DbContract.PublicationsTable.COLUMN_ID + " AND " +
-						DbContract.PublicationAuthorsTable.COLUMN_AUTHOR_ID
+				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID + "=" +
+						DbContract.PublicationsTable.FULL_COLUMN_ID + " AND " +
+						DbContract.PublicationAuthorsTable.FULL_COLUMN_AUTHOR_ID
 						+ "=" +
-						DbContract.AuthorsTable.COLUMN_ID + " AND " +
-						DbContract.AuthorsTable.COLUMN_NAME + " ILIKE ?");
+						DbContract.AuthorsTable.FULL_COLUMN_ID + " AND " +
+						DbContract.AuthorsTable.FULL_COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());

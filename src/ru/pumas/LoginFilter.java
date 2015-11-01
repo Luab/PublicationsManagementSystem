@@ -44,8 +44,9 @@ public class LoginFilter implements Filter {
 		HttpSession session = req.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
 			res.sendRedirect(req.getContextPath() + "/index.jsp");
+		} else {
+			chain.doFilter(req, res);
 		}
-		chain.doFilter(req, res);
 	}
 
 	/**
