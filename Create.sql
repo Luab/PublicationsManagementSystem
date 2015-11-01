@@ -107,22 +107,48 @@ CREATE TRIGGER decrement_on_delete
     EXECUTE PROCEDURE decrement();
 
  
+  
+
   CREATE OR REPLACE FUNCTION make_searchable_text()
  RETURNS TRIGGER  AS $$
 BEGIN
 UPDATE publication 
-   SET searchable =  to_tsvector('english', authors_for_publicationID(publication_id)||' '||coalesce(publication_title,'')||' '||coalesce(description,' '))
+   SET searchable =  to_tsvector(
+      'english',
+             coalesce(authors_for_publicationID (publication_id),' ')
+      ||' '||coalesce(publication_title,' ')
+      ||' '||coalesce(description,' ')
+      ||' '||coalesce(subjects_for_publicationID  (publication_id),' ')
+      ||' '||coalesce(venue_for_publicationID     (publication_id),' ')
+      )
 WHERE publication_id=new.publication_id;
 
- RETURN NULL;
+RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
+
 
 CREATE TRIGGER make_ts
     AFTER INSERT OR DELETE ON authorship
     FOR EACH ROW
     EXECUTE PROCEDURE make_searchable_text();
-    
+CREATE TRIGGER make_ts2
+    AFTER INSERT OR DELETE ON written_on
+    FOR EACH ROW
+    EXECUTE PROCEDURE make_searchable_text();
+
+
+CREATE OR REPLACE FUNCTION subjects_for_publicationID(id INT)
+RETURNS TEXT AS $$
+DECLARE
+s TEXT;
+BEGIN
+SELECT string_agg(subject_name, ' ') FROM subject, written_on INTO s WHERE
+        publication_id = id AND subject.subject_id = written_on.subject_id;
+RETURN s;
+END
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION authors_for_publicationID(id INT)
 RETURNS TEXT AS $$
 DECLARE
@@ -133,6 +159,19 @@ SELECT string_agg(author_name, ' ') FROM author, authorship INTO s WHERE
 RETURN s;
 END
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION venue_for_publicationID(id INT)
+RETURNS TEXT AS $$
+DECLARE
+s TEXT;
+BEGIN
+SELECT string_agg(venue_name, ' ') FROM publication, venue INTO s WHERE
+        publication_id = id AND venue.venue_id = publication.venue_id;
+RETURN s;
+END
+$$ LANGUAGE plpgsql;
+
+
 ----------------------------------
 --RELATED ARTICLES 
 -------------------------
