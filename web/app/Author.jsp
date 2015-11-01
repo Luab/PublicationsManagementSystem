@@ -102,8 +102,7 @@
   </nav>
 
 
-  <div id="page-wrapper">
-    < class="row">
+  <div id="page-wrapper" class="row">
       <div class="col-lg-12">
         <%
           Integer i;

@@ -125,10 +125,17 @@
     <div class="form-group">
       <label>Description</label>
       <p class="form-control-static"><%=publ.getDescription()%></p>
-
+      <%if(publ.getDoi()!=null){
+      String doi = publ.getDoi();
+      %>
       <label>DOI</label>
-      <p class="form-control-static"><%=publ.getDoi()%></p>
-
+      <p class="form-control-static"><a data-href="www.doi.org/<%=doi.split(":(?=[^:]*$)(.*)")[2]%>" <%=doi%></p>
+      <%}%>
+        <%if(publ.getVenue()!= null){
+              %>
+      <label>Venue</label>
+      <p class="form-control-static"><%=publ.getVenue().getName()%></p>
+        <%}%>
       <div class="row">
         <div class="col-lg-6">
           <div class="panel panel-default">
@@ -164,11 +171,6 @@
                   </tbody>
                 </table>
               </div>
-              <%if(publ.getVenue()!= null){
-              %>
-              <label>Venue</label>
-              <p class="form-control-static"><%=publ.getVenue().getName()%></p>
-              <%}%>
 
     </div>
     <div class="row">
