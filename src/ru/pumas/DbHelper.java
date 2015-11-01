@@ -618,7 +618,10 @@ public class DbHelper {
 						+ ",q) AS " + DbContract.PublicationsTable.COLUMN_TITLE,
 				DbContract.PublicationsTable.COLUMN_DATE_CREATED,
 				DbContract.PublicationsTable.COLUMN_DATE_UPDATED,
-				DbContract.PublicationsTable.COLUMN_VENUE_ID
+				DbContract.PublicationsTable.COLUMN_VENUE_ID,
+				DbContract.PublicationsTable.COLUMN_DOI,
+				DbContract.PublicationsTable.COLUMN_ID,
+				DbContract.PublicationsTable.COLUMN_NUMBER_OF_AUTHORS, 
 		}, new String[] { DbContract.PublicationsTable.TABLE_NAME,
 				"plainto_tsquery('english', ?) AS q" },
 				DbContract.PublicationsTable.COLUMN_SEARCHABLE
