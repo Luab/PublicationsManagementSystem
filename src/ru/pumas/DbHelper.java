@@ -9,13 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import org.postgresql.Driver;
 
 public class DbHelper {
 
-	static final String DB_URL = "jdbc:postgresql://10.240.19.130:5432/student";
-	static final String DB_USER = "yura";
-	static final String DB_PASS = "";
+	static final String DB_URL = "jdbc:postgresql://localhost:5432/student";
+	static final String DB_USER = "student";
+	static final String DB_PASS = "student";
 
 	private static Connection connection = getConnection();
 
@@ -37,6 +36,12 @@ public class DbHelper {
 			}
 		}
 		return s;
+	}
+
+	static String selectWhatFromWhere(String what, String from, String where) {
+		String[] arWhat = what == null ? null : new String[] { what };
+		String[] arFrom = from == null ? null : new String[] { from };
+		return selectWhatFromWhere(arWhat, arFrom, where);
 	}
 
 	static String selectWhatFromWhere(String[] what, String[] from,
@@ -82,7 +87,7 @@ public class DbHelper {
 		return rs.getInt(3); // TODO: why 3 ???
 	}
 
-	public static int addPublicationAuthorRelationship(String author,
+	public static int addPublicationAuthorRelationship(int authorId,
 			int publicationId) throws SQLException {
 		String sql = "INSERT INTO " +
 				DbContract.PublicationAuthorsTable.TABLE_NAME + " (" +
@@ -93,7 +98,7 @@ public class DbHelper {
 		PreparedStatement statement = connection.prepareStatement(sql,
 				Statement.RETURN_GENERATED_KEYS);
 		statement.setInt(1, publicationId);
-		statement.setInt(2, getOrAddAuthorId(author));
+		statement.setInt(2, authorId);
 		System.out.println(statement.toString());
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
@@ -103,8 +108,8 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
-	public static int addPublicationSubjectRelationship(String subject,
-			int pub_id) throws SQLException {
+	public static int addPublicationSubjectRelationship(int subjectId,
+			int publicationId) throws SQLException {
 		String sql = "INSERT INTO "
 				+ DbContract.PublicationsSubjectTable.TABLE_NAME + " (" +
 				DbContract.PublicationsSubjectTable.COLUMN_PUBLICATION_ID
@@ -114,8 +119,8 @@ public class DbHelper {
 
 		PreparedStatement statement = connection.prepareStatement(sql,
 				Statement.RETURN_GENERATED_KEYS);
-		statement.setInt(1, pub_id);
-		statement.setInt(2, getOrAddSubjectId(subject));
+		statement.setInt(1, publicationId);
+		statement.setInt(2, subjectId);
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
 		if (!rs.next()) {
@@ -124,8 +129,8 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
-	public static int addPublicationKeywordRelationship(String keyword,
-			int pub_id) throws SQLException {
+	public static int addPublicationKeywordRelationship(int keywordId,
+			int publicationId) throws SQLException {
 		String sql = "INSERT INTO "
 				+ DbContract.KeywordInTable.TABLE_NAME + " (" +
 				DbContract.KeywordInTable.COLUMN_PUBLICATION_IN
@@ -135,8 +140,8 @@ public class DbHelper {
 
 		PreparedStatement statement = connection.prepareStatement(sql,
 				Statement.RETURN_GENERATED_KEYS);
-		statement.setInt(1, pub_id);
-		statement.setInt(2, getOrAddKeywordId(keyword));
+		statement.setInt(1, publicationId);
+		statement.setInt(2, keywordId);
 
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
@@ -176,27 +181,34 @@ public class DbHelper {
 	}
 
 	/**
-	 * Returns <code>id</code> of author. If this author does not exist adds
-	 * author to database.
-	 *
+	 * Searches for author by name
+	 * 
 	 * @param author
-	 *            to search
-	 * @return id of author
+	 *            name of the author
+	 * @return <code>id</code> of the author or <code>null</code> if no author
+	 *         found.
 	 * @throws SQLException
 	 */
-	public static int getOrAddAuthorId(String author) throws SQLException {
-		String sql = "SELECT * FROM " + DbContract.AuthorsTable.TABLE_NAME +
-				" WHERE " + DbContract.AuthorsTable.COLUMN_NAME + " = ?";
+	public static Integer getAuthorId(String author) throws SQLException {
+		String sql = selectWhatFromWhere(DbContract.AuthorsTable.COLUMN_ID,
+				DbContract.AuthorsTable.TABLE_NAME,
+				DbContract.AuthorsTable.COLUMN_NAME + " = ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, author);
 		ResultSet rs = preparedStatement.executeQuery();
 		if (rs.next()) {
 			return rs.getInt(DbContract.AuthorsTable.COLUMN_ID);
 		}
-		return addAuthor(author);
+		return null;
 	}
 
-	public static int getOrAddSubjectId(String subject) throws SQLException {
+	/**
+	 * 
+	 * @param subject
+	 * @return <code>id</code> if found, <code>null</code> if not found.
+	 * @throws SQLException
+	 */
+	public static Integer getSubjectId(String subject) throws SQLException {
 		String sql = "SELECT * FROM " +
 				DbContract.SubjectsTable.TABLE_NAME + " WHERE " +
 				DbContract.SubjectsTable.COLUMN_NAME + " = ?";
@@ -207,10 +219,16 @@ public class DbHelper {
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
-		return addSubject(subject);
+		return null;
 	}
 
-	public static int getOrAddVenueId(String venue) throws SQLException {
+	/**
+	 * 
+	 * @param venue
+	 * @return <code>id</code> if found, <code>null</code> otherwise
+	 * @throws SQLException
+	 */
+	public static Integer getVenueId(String venue) throws SQLException {
 		String sql = "SELECT * FROM " +
 				DbContract.VenuesTable.TABLE_NAME + " WHERE "
 				+ DbContract.VenuesTable.COLUMN_NAME + " = ?";
@@ -220,28 +238,34 @@ public class DbHelper {
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
-		return addVenue(venue);
+		return null;
 	}
 
-	public static ResultSet getPublicationIdByLinkSet(String link)
-			throws SQLException {
-		String sql = "SELECT * FROM " +
-				DbContract.PublicationsTable.TABLE_NAME + " WHERE " +
-				DbContract.PublicationsTable.COLUMN_LINK + " = ?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setString(1, link);
-		return preparedStatement.executeQuery();
-	}
+//	public static ResultSet getPublicationIdByLinkSet(String link)
+//			throws SQLException {
+//		String sql = "SELECT * FROM " +
+//				DbContract.PublicationsTable.TABLE_NAME + " WHERE " +
+//				DbContract.PublicationsTable.COLUMN_LINK + " = ?";
+//		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//		preparedStatement.setString(1, link);
+//		return preparedStatement.executeQuery();
+//	}
+//
+//	public static int getPublicationIdByLink(String link) throws SQLException {
+//		ResultSet rs = getPublicationIdByLinkSet(link);
+//		if (rs.next()) {
+//			return rs.getInt(1);
+//		}
+//		throw new NoSuchElementException("No publication with link " + link);
+//	}
 
-	public static int getPublicationIdByLink(String link) throws SQLException {
-		ResultSet rs = getPublicationIdByLinkSet(link);
-		if (rs.next()) {
-			return rs.getInt(1);
-		}
-		throw new NoSuchElementException("No publication with link " + link);
-	}
-
-	public static int getOrAddKeywordId(String keyword) throws SQLException {
+	/**
+	 * 
+	 * @param keyword
+	 * @return <code>id</code> if found, <code>null</code> otherwise
+	 * @throws SQLException
+	 */
+	public static Integer getKeywordId(String keyword) throws SQLException {
 		String sql = "SELECT * FROM " +
 				DbContract.KeywordsTable.TABLE_NAME + " WHERE "
 				+ DbContract.KeywordsTable.COLUMN_KEYWORD + " = ?";
@@ -251,7 +275,7 @@ public class DbHelper {
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
-		return addKeyword(keyword);
+		return null;
 	}
 
 	public static int addKeyword(String keyword) throws SQLException {
@@ -299,6 +323,40 @@ public class DbHelper {
 		ResultSet rs = getVenueByIdSet(id);
 		if (rs.next()) {
 			return Venue.from(rs);
+		}
+		return null;
+	}
+
+	public static ResultSet getAuthorByIdSet(int id) throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				new String[] { DbContract.AuthorsTable.TABLE_NAME },
+				DbContract.AuthorsTable.COLUMN_ID + " = ?");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		return preparedStatement.executeQuery();
+	}
+
+	public static Author getAuthorById(int id) throws SQLException {
+		ResultSet rs = getAuthorByIdSet(id);
+		if (rs.next()) {
+			return Author.from(rs);
+		}
+		return null;
+	}
+
+	public static ResultSet getSubjectByIdSet(int id) throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.SubjectsTable.TABLE_NAME,
+				DbContract.SubjectsTable.COLUMN_ID + " = ?");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		return preparedStatement.executeQuery();
+	}
+
+	public static Subject getSubjectById(int id) throws SQLException {
+		ResultSet rs = getSubjectByIdSet(id);
+		if (rs.next()) {
+			return Subject.from(rs);
 		}
 		return null;
 	}
@@ -368,6 +426,16 @@ public class DbHelper {
 				new String[] { DbContract.PublicationsTable.TABLE_NAME },
 				null);
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		return preparedStatement.executeQuery();
+	}
+
+	public static ResultSet searchPublicationsByTitleSubstring(String s)
+			throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.PublicationsTable.TABLE_NAME,
+				DbContract.PublicationsTable.COLUMN_TITLE + " ILIKE ?");
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, "%" + s + "%");
 		return preparedStatement.executeQuery();
 	}
 

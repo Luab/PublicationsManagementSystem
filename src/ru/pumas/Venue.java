@@ -8,14 +8,6 @@ public class Venue {
 	int id;
 	String name;
 
-	public Venue() {
-	}
-
-	public Venue(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -24,11 +16,11 @@ public class Venue {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Venue() {
 	}
 
-	public void setName(String name) {
+	public Venue(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
