@@ -12,10 +12,6 @@ import java.util.List;
 
 public class DbHelper {
 
-	static final String DB_URL = "jdbc:postgresql://localhost:5432/psm";
-	static final String DB_USER = "student";
-	static final String DB_PASS = "student";
-
 	private static Connection connection = getConnection();
 
 	static String commaSeparated(Object[] obj, String append) {
@@ -80,7 +76,8 @@ public class DbHelper {
 	static Connection getConnection() {
 		try {
 			Class.forName("org.postgresql.Driver");
-			return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+			return DriverManager.getConnection(DbCredentials.DB_URL,
+					DbCredentials.DB_USER, DbCredentials.DB_PASS);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -331,7 +328,8 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
-	public static PublicationSet getPublicationSetById(int id) throws SQLException {
+	public static PublicationSet getPublicationSetById(int id)
+			throws SQLException {
 		String sql = "SELECT * FROM " +
 				DbContract.PublicationsTable.TABLE_NAME + " WHERE "
 				+ DbContract.PublicationsTable.COLUMN_ID + " = ?";
@@ -417,15 +415,15 @@ public class DbHelper {
 		return new AuthorSet(preparedStatement.executeQuery());
 	}
 
-//	public static Author[] getAuthorsByPublicationId(int id)
-//			throws SQLException {
-//		ResultSet rs = getAuthorsByPublicationIdSet(id);
-//		ArrayList<Author> authors = new ArrayList<>();
-//		while (rs.next()) {
-//			authors.add(Author.from(rs));
-//		}
-//		return authors.toArray(new Author[authors.size()]);
-//	}
+	// public static Author[] getAuthorsByPublicationId(int id)
+	// throws SQLException {
+	// ResultSet rs = getAuthorsByPublicationIdSet(id);
+	// ArrayList<Author> authors = new ArrayList<>();
+	// while (rs.next()) {
+	// authors.add(Author.from(rs));
+	// }
+	// return authors.toArray(new Author[authors.size()]);
+	// }
 
 	public static SubjectSet getSubjectsByPublicationIdSet(int id)
 			throws SQLException {
@@ -448,15 +446,15 @@ public class DbHelper {
 		return new SubjectSet(preparedStatement.executeQuery());
 	}
 
-//	public static Subject[] getSubjectsByPublicationId(int id)
-//			throws SQLException {
-//		ResultSet rs = getSubjectsByPublicationIdSet(id);
-//		List<Subject> subjects = new ArrayList<>();
-//		while (rs.next()) {
-//			subjects.add(Subject.from(rs));
-//		}
-//		return subjects.toArray(new Subject[subjects.size()]);
-//	}
+	// public static Subject[] getSubjectsByPublicationId(int id)
+	// throws SQLException {
+	// ResultSet rs = getSubjectsByPublicationIdSet(id);
+	// List<Subject> subjects = new ArrayList<>();
+	// while (rs.next()) {
+	// subjects.add(Subject.from(rs));
+	// }
+	// return subjects.toArray(new Subject[subjects.size()]);
+	// }
 
 	public static ResultSet getPublicationsSet() throws SQLException {
 		String sql = selectWhatFromWhere(null,
@@ -664,5 +662,17 @@ public class DbHelper {
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
-	
+
+	public static SubjectSet getSubjectSet() throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.SubjectsTable.TABLE_NAME, null);
+		return new SubjectSet(connection.createStatement().executeQuery(sql));
+	}
+
+	public static AuthorSet getAuthorSet() throws SQLException {
+		String sql = selectWhatFromWhere(null,
+				DbContract.AuthorsTable.TABLE_NAME, null);
+		return new AuthorSet(connection.createStatement().executeQuery(sql));
+	}
+
 }
