@@ -11,7 +11,7 @@ public class SubjectSet {
 		return rs.next();
 	}
 
-	Subject getSubject() throws SQLException {
+	public Subject getSubject() throws SQLException {
 		return Subject.from(rs);
 	}
 

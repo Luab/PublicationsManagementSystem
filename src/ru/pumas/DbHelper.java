@@ -607,7 +607,7 @@ public class DbHelper {
 		String sql = selectWhatFromWhere(null,
 				DbContract.PublicationsTable.TABLE_NAME,
 				DbContract.PublicationsTable.COLUMN_SEARCHABLE
-						+ " @@ to_tsquery(?)");
+						+ " @@ plainto_tsquery('English', ?)");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, s);
 		return new PublicationSet(preparedStatement.executeQuery());
