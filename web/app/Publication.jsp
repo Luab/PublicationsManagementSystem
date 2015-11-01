@@ -232,8 +232,8 @@
                                                             </thead>
                                                             <tbody>
                                                             <%
-                                                                PublicationSet rel =
-                                                                while (rel.next()) {
+                                                                x=0;
+                                                                PublicationSet rel = DbHelper.getRelatedPublicationsByAuthor(i);                                                                while (rel.next()) {
                                                                     Publication publication = rel.getPublication();
                                                                     Integer pid = publication.getId();
                                                                     %>
