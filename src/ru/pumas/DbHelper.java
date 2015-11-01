@@ -80,7 +80,7 @@ public class DbHelper {
 					DbCredentials.DB_USER, DbCredentials.DB_PASS);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			return null;
+			throw new Error(e.getMessage());
 		}
 	}
 
@@ -622,7 +622,7 @@ public class DbHelper {
 		}, new String[] { DbContract.PublicationsTable.TABLE_NAME,
 				"plainto_tsquery('english', ?) AS q" },
 				DbContract.PublicationsTable.COLUMN_SEARCHABLE
-						+ "q ORDER BY ts_rank_cd("
+						+ " @@ q ORDER BY ts_rank_cd("
 						+ DbContract.PublicationsTable.COLUMN_SEARCHABLE
 						+ ",q)");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
