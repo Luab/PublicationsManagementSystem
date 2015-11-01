@@ -8,15 +8,16 @@ import java.util.List;
 import ru.pumas.Author;
 import ru.pumas.DbHelper;
 import ru.pumas.Publication;
+import ru.pumas.PublicationSet;
 import ru.pumas.Subject;
 
 public class Test {
 
 	public static void main(String[] args) throws SQLException {
-		ResultSet rs = DbHelper.getPublicationSetByVenueId(3);
+		PublicationSet rs = DbHelper.getPublicationSetByVenueId(1);
 		
 		while(rs.next()) {
-			System.out.println(Publication.from(rs).getTitle());
+			System.out.println(rs.getPublication());
 		}
 	}
 

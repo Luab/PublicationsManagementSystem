@@ -14,7 +14,7 @@ public class Parser {
 		int fileNo = 109; // Setting how many files programm will parse
 		long t1 = 0;
 		String path;
-		for (int i = 1; i <= fileNo; i++) {
+		for (int i = 64; i <= fileNo; i++) {
 			path = "xml_dumps/" + i;
 
 			t1 = System.nanoTime();
