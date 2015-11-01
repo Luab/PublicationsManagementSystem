@@ -46,6 +46,7 @@
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
 
+
     </script>
     <script type="text/javascript"
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -100,6 +101,13 @@
     <%
         String search = request.getParameter("request");
         String type = request.getParameter("optionsRadiosInline");
+        String parsed = request.getParameter("offset");
+        Integer offset;
+        if (parsed == null) {
+            offset = 0;
+        } else {
+            offset = Integer.parseInt(request.getParameter("offset"));
+        }
     %>
 
     <div id="page-wrapper">
@@ -155,7 +163,7 @@
                                     </td>
                                     <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getTitle()%>
                                     </a></td>
-                                    <td><a href="publication.jsp?id=<%=pid%>"><%="..."+publ.getDescription()+"..."%>
+                                    <td><a href="publication.jsp?id=<%=pid%>"><%="..." + publ.getDescription() + "..."%>
                                     </a></td>
                                     <td>
                                         <%
@@ -170,6 +178,12 @@
                                         %></td>
                                 </tr>
                                 </tbody>
+                                <button type="submit" class="btn btn-default"><a
+                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset+1%>&request=<%=search%>">Next
+                                    page</a></button>
+                                <button type="submit" class="btn btn-default"><a
+                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset-1%>&request=<%=search%>">Previous
+                                    page</a></button>
                             </table>
                         </div>
                         <!-- /.table-responsive -->
