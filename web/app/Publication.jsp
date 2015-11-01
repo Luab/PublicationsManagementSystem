@@ -232,7 +232,7 @@
                                                             </thead>
                                                             <tbody>
                                                             <%
-                                                                x=0;
+                                                                x=1;
                                                                 PublicationSet rel = DbHelper.getRelatedPublicationsByAuthor(i);                                                                while (rel.next()) {
                                                                     Publication publication = rel.getPublication();
                                                                     Integer pid = publication.getId();

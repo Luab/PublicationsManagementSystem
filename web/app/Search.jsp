@@ -107,6 +107,9 @@
                     <label class="radio-inline">
                       <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="subs">Subject search
                     </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline4" value="ven">Venue search
+                    </label>
                   </div>
                   <button type="submit" class="btn btn-default">Submit Button</button>
                 </form>

@@ -151,6 +151,9 @@
                                         if (type.equals("subs")) {
                                             rs = DbHelper.searchPublicationsByVenueSubstsring(search);
                                         }
+                                        if (type.equals("ven")){
+                                            rs = DbHelper.searchPublicationsByVenueSubstsring(search);
+                                        }
                                     }
                                     while (rs.next()) {
                                         Publication publ = rs.getPublication();
