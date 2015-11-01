@@ -9,29 +9,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		if (request.getParameter("authorname") != null) {
-			System.err.println(DbHelper.addAuthor(new Author(0, request.getParameter("authorname"))));
-		}
-	%>
-	<form method="get">
-		<input type="text" name="authorname"> <input type="submit">
-	</form>
-	<table border="1">
-		<tr>
-			<th>id</th>
-			<th>name</th>
-		</tr>
-		<%
-			for (int i=0;i<10;i++)
-			 out.print(i);
-							//Author a : DbHelper.getAuthors()) {
-		%>
-		<%--<tr>--%>
 
-			<%--&lt;%&ndash;<td><%=a.getId()%></td>--%>
-			<%--<td><%=a.getName()%></td>&ndash;%&gt;--%>
-		<%--</tr>--%>
-	</table>
+<thead>
+<tr>
+	<th>#</th>
+	<th>Name</th>
+</tr>
+</thead>
+<tbody>
+	<% i++;
+                                    while (rs.next()) {
+                                        Author author = Author.from(rs);
+                                        Integer aid = author.getId();
+                                %>
+<tr>
+	<td><%=i%>
+	</td>
+	<td><a href="author.jsp?id=<%=aid%>"><%=author.getName()%>
+	</a></td>
+
+</tr>
+	<%
+                                        }
+                                    }
+                                %>
+
 </body>
 </html>

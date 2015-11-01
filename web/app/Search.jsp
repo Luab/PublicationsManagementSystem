@@ -58,13 +58,13 @@
             <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
-            <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
+            <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+            <a class="active" href="subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
           </li>
           <li>
-            <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+            <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
           <!-- /.nav-second-level -->
         </ul>
@@ -97,15 +97,15 @@
                     <input name="request" class="form-control" placeholder="Enter request">
                   </div>
                   <div class="form-group">
-                    <label>Choose search destination</label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox">Authors
+                    <label>Choose search method</label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="ss" checked>Smart search
                     </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox">Publications
+                    <label class="radio-inline">
+                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="as">Author search
                     </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox">Subjects
+                    <label class="radio-inline">
+                      <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="subs">Subject search
                     </label>
                   </div>
                   <button type="submit" class="btn btn-default">Submit Button</button>
