@@ -130,9 +130,7 @@
       String doi = publ.getDoi();
       %>
             <label>DOI</label>
-
-            <p class="form-control-static"><a data-href="www.doi.org/<%=doi.split(":(?=[^:]*$)(.*)")[1]%>" <%=doi%>
-            </p>
+            <p class="form-control-static"><a data-href="www.doi.org/<%=doi%>"> <%=doi%></a>            </p>
                 <%}%>
                 <%if(publ.getVenue()!= null){
               %>

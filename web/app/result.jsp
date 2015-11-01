@@ -131,20 +131,20 @@
                                     int i = 0;
                                     PublicationSet rs = null;
                                     if (search == null) {
-                                        rs = DbHelper.getPublicationsSet();
+                                        rs = DbHelper.getPublicationSet();
                                     } else {
                                         if (type.equals("ss")) {
                                             rs = DbHelper.searchPublicationSet(search);
                                         }
                                         if (type.equals("as")) {
-                                            rs = DbHelper.searchAuthorsBySubstring(search);
+                                            rs = DbHelper.searchPublicationsByAuthorSubstring(search);
                                         }
                                         if (type.equals("subs")) {
-                                            rs = DbHelper.searchSubjectsBySubstring(search);
+                                            rs = DbHelper.searchPublicationsByVenueSubstsring(search);
                                         }
                                     }
                                     while (rs.next()) {
-                                        Publication publ = Publication.from(rs);
+                                        Publication publ = rs.getPublication();
                                         i++;
                                         Integer pid = publ.getId();
                                         AuthorSet auth = DbHelper.getAuthorsByPublicationIdSet(publ.getId());
