@@ -83,13 +83,13 @@
                         <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
                     </li>
                     <li>
-                        <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
+                        <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
                     </li>
                     <li>
-                        <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+                        <a class="active" href="subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
                     </li>
                     <li>
-                        <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+                        <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
                     </li>
                     <!-- /.nav-second-level -->
                 </ul>

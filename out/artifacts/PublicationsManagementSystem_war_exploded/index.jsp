@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Publication managment system 0.001 PRE-ALPHA EDITION</title>
+  <title>Publication managment system 0.03b PRE-ALPHA EDITION</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
