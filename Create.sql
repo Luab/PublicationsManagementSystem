@@ -134,7 +134,7 @@ RETURN s;
 END
 $$ LANGUAGE plpgsql;
 ----------------------------------
-RELATED ARTICLES 
+--RELATED ARTICLES 
 -------------------------
 CREATE OR REPLACE FUNCTION related_by_subject(pub_id INT)
   RETURNS TABLE(id INTEGER) AS $$
@@ -193,7 +193,7 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 -----------------------------------------
-INDEXES
+--INDEXES
 -----------------------------------------
 
 CREATE UNIQUE INDEX publicationID
@@ -221,7 +221,7 @@ ON written_on (subject_id);
 CREATE  INDEX authorshipP_ID_lookup
 ON authorship (publication_id);
 CREATE  INDEX authorshipA_ID_lookup
-ON authorship (auhtor_id);
+ON authorship (author_id);
 --
 
 
