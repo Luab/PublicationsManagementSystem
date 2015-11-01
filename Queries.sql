@@ -6,12 +6,10 @@
 ---------------------------------------
 Поиск по тсвектору
 ---------------------------------------
-SELECT DISTINCT P.publication_title, P.description, P.datePublished, authors_for_publicationID(P.publication_ID), V.venue_name FROM publication as P, authorship as AP, author as A, venue as V 
-WHERE P.searchable @@ to_tsquery('atom | spin')
-AND A.author_id=AP.author_id
-AND P.publication_id=AP.publication_ID
-AND V.venue_id = P.venue_id
+SELECT *, authors_for_publicationID(P.publication_ID) FROM publication as P
+WHERE P.searchable @@@ to_tsquery('atom & spin')
 ; 
+
 
 ---------------------------------------
 Поиск по автору
