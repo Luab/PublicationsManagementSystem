@@ -1,6 +1,7 @@
 package ru.pumas;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class DbHelper {
 
 	private static Connection connection = getConnection();
 
-	static String commaSeparated(Object[] obj, String append) {
+	private static String commaSeparated(Object[] obj, String append) {
 		if (obj == null) {
 			return null;
 		}
@@ -38,13 +39,14 @@ public class DbHelper {
 		return s;
 	}
 
-	static String selectWhatFromWhere(String what, String from, String where) {
+	private static String selectWhatFromWhere(String what, String from,
+			String where) {
 		String[] arWhat = what == null ? null : new String[] { what };
 		String[] arFrom = from == null ? null : new String[] { from };
 		return selectWhatFromWhere(arWhat, arFrom, where);
 	}
 
-	static String selectWhatFromWhere(String[] what, String[] from,
+	private static String selectWhatFromWhere(String[] what, String[] from,
 			String where) {
 		String s = "SELECT ";
 		if (what == null) {
@@ -58,6 +60,21 @@ public class DbHelper {
 			s += " WHERE ";
 			s += where;
 		}
+		return s;
+	}
+
+	private static String insertIntoValuesQuestionMarks(String into,
+			String[] values) {
+
+		String s = "INSERT INTO " + into + " (" + commaSeparated(values, null)
+				+ ") VALUES (";
+		for (int i = 0; i < values.length; i++) {
+			s += "?";
+			if (i != values.length - 1) {
+				s += ",";
+			}
+		}
+		s += ")";
 		return s;
 	}
 
@@ -78,7 +95,6 @@ public class DbHelper {
 		PreparedStatement statement = connection.prepareStatement(sql,
 				Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1, author);
-		// System.out.println(statement.toString());
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
 		if (!rs.next()) {
@@ -99,7 +115,6 @@ public class DbHelper {
 				Statement.RETURN_GENERATED_KEYS);
 		statement.setInt(1, publicationId);
 		statement.setInt(2, authorId);
-		System.out.println(statement.toString());
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
 		if (!rs.next()) {
@@ -202,6 +217,14 @@ public class DbHelper {
 		return null;
 	}
 
+	public static int getOrAddAuthorId(String author) throws SQLException {
+		Integer id = getAuthorId(author);
+		if (id == null) {
+			id = addAuthor(author);
+		}
+		return id;
+	}
+
 	/**
 	 * 
 	 * @param subject
@@ -220,6 +243,14 @@ public class DbHelper {
 			return rs.getInt(1);
 		}
 		return null;
+	}
+
+	public static int getOrAddSubjectId(String subject) throws SQLException {
+		Integer id = getSubjectId(subject);
+		if (id == null) {
+			id = addSubject(subject);
+		}
+		return id;
 	}
 
 	/**
@@ -241,23 +272,31 @@ public class DbHelper {
 		return null;
 	}
 
-//	public static ResultSet getPublicationIdByLinkSet(String link)
-//			throws SQLException {
-//		String sql = "SELECT * FROM " +
-//				DbContract.PublicationsTable.TABLE_NAME + " WHERE " +
-//				DbContract.PublicationsTable.COLUMN_LINK + " = ?";
-//		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//		preparedStatement.setString(1, link);
-//		return preparedStatement.executeQuery();
-//	}
-//
-//	public static int getPublicationIdByLink(String link) throws SQLException {
-//		ResultSet rs = getPublicationIdByLinkSet(link);
-//		if (rs.next()) {
-//			return rs.getInt(1);
-//		}
-//		throw new NoSuchElementException("No publication with link " + link);
-//	}
+	public static int getOrAddVenueId(String venue) throws SQLException {
+		Integer id = getVenueId(venue);
+		if (id == null) {
+			id = addVenue(venue);
+		}
+		return id;
+	}
+	// public static ResultSet getPublicationIdByLinkSet(String link)
+	// throws SQLException {
+	// String sql = "SELECT * FROM " +
+	// DbContract.PublicationsTable.TABLE_NAME + " WHERE " +
+	// DbContract.PublicationsTable.COLUMN_LINK + " = ?";
+	// PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	// preparedStatement.setString(1, link);
+	// return preparedStatement.executeQuery();
+	// }
+	//
+	// public static int getPublicationIdByLink(String link) throws SQLException
+	// {
+	// ResultSet rs = getPublicationIdByLinkSet(link);
+	// if (rs.next()) {
+	// return rs.getInt(1);
+	// }
+	// throw new NoSuchElementException("No publication with link " + link);
+	// }
 
 	/**
 	 * 
@@ -437,6 +476,79 @@ public class DbHelper {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return preparedStatement.executeQuery();
+	}
+
+	public static int addPublication(String doi, String link,
+			Date dateCreated,
+			Date dateUpdated, int venueId, String title, String description)
+					throws SQLException {
+
+		String sql = insertIntoValuesQuestionMarks(
+				DbContract.PublicationsTable.TABLE_NAME,
+				new String[] { DbContract.PublicationsTable.COLUMN_DOI,
+						DbContract.PublicationsTable.COLUMN_LINK,
+						DbContract.PublicationsTable.COLUMN_DATE_CREATED,
+						DbContract.PublicationsTable.COLUMN_DATE_UPDATED,
+						DbContract.PublicationsTable.COLUMN_VENUE_ID,
+						DbContract.PublicationsTable.COLUMN_TITLE,
+						DbContract.PublicationsTable.COLUMN_DESCRIPTION});
+		PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		preparedStatement.setString(1, doi);
+		preparedStatement.setString(2, link);
+		preparedStatement.setDate(3, dateCreated);
+		preparedStatement.setDate(4, dateUpdated);
+		preparedStatement.setInt(5, venueId);
+		preparedStatement.setString(6, title);
+		preparedStatement.setString(7, description);
+
+		preparedStatement.execute();
+		ResultSet rs = preparedStatement.getGeneratedKeys();
+		if (!rs.next()) {
+			throw new SQLException("Can't get keys");
+		}
+		return rs.getInt(1);
+	}
+
+	/**
+	 * Adds new <code>Publication</code> and (if needed) new
+	 * <code>Authors</code>, <code>Subjects</code>, <code>Venue</code>. All
+	 * parameters may be <code>null</code> if db allows column being
+	 * <code>null</code>.
+	 * 
+	 * @param doi
+	 * @param link
+	 * @param dateCreated
+	 * @param dateUpdated
+	 * @param venue
+	 * @param title
+	 * @param description
+	 * @param authors
+	 *            list of <code>Author</code> names. May be <code>null</code>.
+	 * @param subjects
+	 *            list of <code>Subject</code> names. May be <code>null</code>.
+	 * @return <code>id</code> of new publication.
+	 * @throws SQLException
+	 */
+	public static int makePublication(String doi, String link,
+			Date dateCreated,
+			Date dateUpdated, String venue, String title, String description,
+			List<String> authors, List<String> subjects) throws SQLException {
+		int publicationId = addPublication(doi, link, dateCreated, dateUpdated,
+				getOrAddVenueId(venue), title, description);
+
+		if (authors != null) {
+			for (String a : authors) {
+				addPublicationAuthorRelationship(getOrAddAuthorId(a),
+						publicationId);
+			}
+		}
+		if (subjects != null) {
+			for (String s : subjects) {
+				addPublicationSubjectRelationship(getOrAddSubjectId(s),
+						publicationId);
+			}
+		}
+		return publicationId;
 	}
 
 }
