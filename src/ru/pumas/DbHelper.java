@@ -35,14 +35,14 @@ public class DbHelper {
 	}
 
 	private static String selectWhatFromWhere(String what, String from,
-			String where, int limit, int pageNumber) {
+			String where) {
 		String[] arWhat = what == null ? null : new String[] { what };
 		String[] arFrom = from == null ? null : new String[] { from };
-		return selectWhatFromWhere(arWhat, arFrom, where, limit, pageNumber);
+		return selectWhatFromWhere(arWhat, arFrom, where);
 	}
 
 	private static String selectWhatFromWhere(String[] what, String[] from,
-			String where, int limit, int pageNumber) {
+			String where) {
 		String s = "SELECT ";
 		if (what == null) {
 			s += "*";
@@ -55,7 +55,6 @@ public class DbHelper {
 			s += " WHERE ";
 			s += where;
 		}
-		s += "LIMIT " + limit + " OFFSET " + (limit * pageNumber);
 		return s;
 	}
 
@@ -201,11 +200,10 @@ public class DbHelper {
 	 *         found.
 	 * @throws SQLException
 	 */
-	public static Integer getAuthorId(String author)
-			throws SQLException {
+	public static Integer getAuthorId(String author) throws SQLException {
 		String sql = selectWhatFromWhere(DbContract.AuthorsTable.COLUMN_ID,
 				DbContract.AuthorsTable.TABLE_NAME,
-				DbContract.AuthorsTable.COLUMN_NAME + " = ?", 1, 0);
+				DbContract.AuthorsTable.COLUMN_NAME + " = ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, author);
 		ResultSet rs = preparedStatement.executeQuery();
@@ -215,8 +213,7 @@ public class DbHelper {
 		return null;
 	}
 
-	public static int getOrAddAuthorId(String author)
-			throws SQLException {
+	public static int getOrAddAuthorId(String author) throws SQLException {
 		Integer id = getAuthorId(author);
 		if (id == null) {
 			id = addAuthor(author);
@@ -366,47 +363,42 @@ public class DbHelper {
 		return null;
 	}
 
-	public static AuthorSet getAuthorByIdSet(int id, int limit, int pageNumber)
-			throws SQLException {
+	public static AuthorSet getAuthorByIdSet(int id) throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				new String[] { DbContract.AuthorsTable.TABLE_NAME },
-				DbContract.AuthorsTable.COLUMN_ID + " = ?", limit, pageNumber);
+				DbContract.AuthorsTable.COLUMN_ID + " = ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new AuthorSet(preparedStatement.executeQuery());
 	}
 
-	public static Author getAuthorById(int id, int limit, int pageNumber)
-			throws SQLException {
-		AuthorSet rs = getAuthorByIdSet(id, limit, pageNumber);
+	public static Author getAuthorById(int id) throws SQLException {
+		AuthorSet rs = getAuthorByIdSet(id);
 		if (rs.next()) {
 			return rs.getAuthor();
 		}
 		return null;
 	}
 
-	public static SubjectSet getSubjectByIdSet(int id, int limit,
-			int pageNumber) throws SQLException {
+	public static SubjectSet getSubjectByIdSet(int id) throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.SubjectsTable.TABLE_NAME,
-				DbContract.SubjectsTable.COLUMN_ID + " = ?", limit, pageNumber);
+				DbContract.SubjectsTable.COLUMN_ID + " = ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new SubjectSet(preparedStatement.executeQuery());
 	}
 
-	public static Subject getSubjectById(int id, int limit, int pageNumber)
-			throws SQLException {
-		SubjectSet rs = getSubjectByIdSet(id, limit, pageNumber);
+	public static Subject getSubjectById(int id) throws SQLException {
+		SubjectSet rs = getSubjectByIdSet(id);
 		if (rs.next()) {
 			return rs.getSubject();
 		}
 		return null;
 	}
 
-	public static AuthorSet getAuthorsByPublicationIdSet(int id, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static AuthorSet getAuthorsByPublicationIdSet(int id)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.AuthorsTable.FULL_COLUMN_ID,
 						DbContract.AuthorsTable.FULL_COLUMN_NAME,
@@ -416,8 +408,7 @@ public class DbHelper {
 				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID
 						+ " = ? AND " + DbContract.AuthorsTable.FULL_COLUMN_ID
 						+ " = "
-						+ DbContract.PublicationAuthorsTable.FULL_COLUMN_AUTHOR_ID,
-				limit, pageNumber);
+						+ DbContract.PublicationAuthorsTable.FULL_COLUMN_AUTHOR_ID);
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				sql);
 		preparedStatement.setInt(1, id);
@@ -434,9 +425,8 @@ public class DbHelper {
 	// return authors.toArray(new Author[authors.size()]);
 	// }
 
-	public static SubjectSet getSubjectsByPublicationIdSet(int id, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static SubjectSet getSubjectsByPublicationIdSet(int id)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.SubjectsTable.TABLE_NAME + "."
 						+ DbContract.SubjectsTable.COLUMN_ID,
@@ -450,8 +440,7 @@ public class DbHelper {
 						DbContract.PublicationsSubjectTable.COLUMN_SUBJECT_ID
 						+ " = " +
 						DbContract.SubjectsTable.TABLE_NAME + "." +
-						DbContract.SubjectsTable.COLUMN_ID,
-				limit, pageNumber);
+						DbContract.SubjectsTable.COLUMN_ID);
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new SubjectSet(preparedStatement.executeQuery());
@@ -467,30 +456,26 @@ public class DbHelper {
 	// return subjects.toArray(new Subject[subjects.size()]);
 	// }
 
-	public static PublicationSet getPublicationSet(int limit, int pageNumber)
-			throws SQLException {
+	public static PublicationSet getPublicationSet() throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				new String[] { DbContract.PublicationsTable.TABLE_NAME },
-				null, limit, pageNumber);
+				null);
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet searchPublicationsByTitleSubstring(String s,
-			int limit, int pageNumber)
-					throws SQLException {
+	public static PublicationSet searchPublicationsByTitleSubstring(String s)
+			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.PublicationsTable.TABLE_NAME,
-				DbContract.PublicationsTable.COLUMN_TITLE + " ILIKE ?", limit,
-				pageNumber);
+				DbContract.PublicationsTable.COLUMN_TITLE + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet getPublicationSetByAuthorId(int id, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static PublicationSet getPublicationSetByAuthorId(int id)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
 				new String[] { DbContract.PublicationsTable.TABLE_NAME,
@@ -499,31 +484,27 @@ public class DbHelper {
 						+ " = ? AND "
 						+ DbContract.PublicationsTable.FULL_COLUMN_ID
 						+ " = "
-						+ DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID,
-				limit, pageNumber);
+						+ DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID);
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				sql);
 		preparedStatement.setInt(1, id);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet getPublicationSetByVenueId(int id, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static PublicationSet getPublicationSetByVenueId(int id)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				DbContract.PublicationsTable.ALL_COLUMNS,
 				DbContract.PublicationsTable.TABLE_NAME,
-				DbContract.PublicationsTable.COLUMN_VENUE_ID + " = ?", limit,
-				pageNumber);
+				DbContract.PublicationsTable.COLUMN_VENUE_ID + " = ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				sql);
 		preparedStatement.setInt(1, id);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet getPublicationSetBySubjectId(int id, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static PublicationSet getPublicationSetBySubjectId(int id)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
 				new String[] { DbContract.PublicationsTable.TABLE_NAME,
@@ -532,8 +513,7 @@ public class DbHelper {
 						+ " = ? AND "
 						+ DbContract.PublicationsTable.FULL_COLUMN_ID
 						+ " = "
-						+ DbContract.PublicationsSubjectTable.FULL_COLUMN_PUBLICATION_ID,
-				limit, pageNumber);
+						+ DbContract.PublicationsSubjectTable.FULL_COLUMN_PUBLICATION_ID);
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				sql);
 		preparedStatement.setInt(1, id);
@@ -620,9 +600,8 @@ public class DbHelper {
 		return publicationId;
 	}
 
-	public static PublicationSet searchPublicationSet(String s, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static PublicationSet searchPublicationSet(String s)
+			throws SQLException {
 		/*
 		 * SELECT P.publication_id, ts_headline(P.publication_title,q) as
 		 * Publication_title, P.datePublished, P.dateUpdated,
@@ -651,103 +630,94 @@ public class DbHelper {
 				DbContract.PublicationsTable.COLUMN_SEARCHABLE
 						+ " @@ q ORDER BY ts_rank_cd("
 						+ DbContract.PublicationsTable.COLUMN_SEARCHABLE
-						+ ",q)",
-				limit, pageNumber);
+						+ ",q)");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, s);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static AuthorSet searchAuthorsBySubstring(String s, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static AuthorSet searchAuthorsBySubstring(String s)
+			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.AuthorsTable.TABLE_NAME,
-				DbContract.AuthorsTable.COLUMN_NAME + " ILIKE ?", limit,
-				pageNumber);
+				DbContract.AuthorsTable.COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new AuthorSet(preparedStatement.executeQuery());
 	}
 
-	public static SubjectSet searchSubjectsBySubstring(String s, int limit,
-			int pageNumber)
-					throws SQLException {
+	public static SubjectSet searchSubjectsBySubstring(String s)
+			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.SubjectsTable.TABLE_NAME,
-				DbContract.SubjectsTable.COLUMN_NAME + " ILIKE ?", limit,
-				pageNumber);
+				DbContract.SubjectsTable.COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new SubjectSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet searchPublicationsByAuthorSubstring(String s,
-			int limit, int pageNumber)
-					throws SQLException {
+	public static PublicationSet searchPublicationsByAuthorSubstring(String s)
+			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
 				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.PublicationsTable.TABLE_NAME,
 						DbContract.PublicationAuthorsTable.TABLE_NAME },
-				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID
-						+ "=" +
+				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID + "=" +
 						DbContract.PublicationsTable.FULL_COLUMN_ID + " AND " +
 						DbContract.PublicationAuthorsTable.FULL_COLUMN_AUTHOR_ID
 						+ "=" +
 						DbContract.AuthorsTable.FULL_COLUMN_ID + " AND " +
-						DbContract.AuthorsTable.FULL_COLUMN_NAME + " ILIKE ?",
-				limit, pageNumber);
+						DbContract.AuthorsTable.FULL_COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet searchPublicationsByVenueSubstsring(String s, int limit, int pageNumber)
+	public static PublicationSet searchPublicationsByVenueSubstsring(String s)
 			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
-				new String[] { DbContract.VenuesTable.TABLE_NAME,
+				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.VenuesTable.TABLE_NAME },
 				DbContract.PublicationsTable.FULL_COLUMN_VENUE_ID + " = "
 						+ DbContract.VenuesTable.FULL_COLUMN_ID + " AND " +
-						DbContract.VenuesTable.FULL_COLUMN_NAME + " ILIKE ?", limit, pageNumber);
+						DbContract.VenuesTable.FULL_COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
-		System.err.println(preparedStatement);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static SubjectSet getSubjectSet(int limit, int pageNumber) throws SQLException {
+	public static SubjectSet getSubjectSet() throws SQLException {
 		String sql = selectWhatFromWhere(null,
-				DbContract.SubjectsTable.TABLE_NAME, null, limit, pageNumber);
+				DbContract.SubjectsTable.TABLE_NAME, null);
 		return new SubjectSet(connection.createStatement().executeQuery(sql));
 	}
 
-	public static AuthorSet getAuthorSet(int limit, int pageNumber) throws SQLException {
+	public static AuthorSet getAuthorSet() throws SQLException {
 		String sql = selectWhatFromWhere(null,
-				DbContract.AuthorsTable.TABLE_NAME, null, limit, pageNumber);
+				DbContract.AuthorsTable.TABLE_NAME, null);
 		return new AuthorSet(connection.createStatement().executeQuery(sql));
 	}
 
-	public static PublicationSet getRelatedPublicationsByTimeAndSubject(int id, int limit, int pageNumber)
+	public static PublicationSet getRelatedPublicationsByTimeAndSubject(int id)
 			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.PublicationsTable.TABLE_NAME
 						+ ", related_by_subject(?)",
-				DbContract.PublicationsTable.COLUMN_ID + "=id", limit, pageNumber);
+				DbContract.PublicationsTable.COLUMN_ID + "=id");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
-	public static PublicationSet getRelatedPublicationsByAuthor(int id, int limit, int pageNumber)
+	public static PublicationSet getRelatedPublicationsByAuthor(int id)
 			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.PublicationsTable.TABLE_NAME
 						+ ", related_by_author(?)",
 				DbContract.PublicationsTable.COLUMN_ID
-						+ "=id", limit, pageNumber);
+						+ "=id");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new PublicationSet(preparedStatement.executeQuery());
