@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DbHelper {
@@ -658,11 +657,12 @@ public class DbHelper {
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
 				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.VenuesTable.TABLE_NAME },
-				DbContract.PublicationsTable.COLUMN_VENUE_ID + "="
+				DbContract.PublicationsTable.COLUMN_VENUE_ID + " = "
 						+ DbContract.VenuesTable.COLUMN_ID + " AND " +
 						DbContract.VenuesTable.COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
+	
 }

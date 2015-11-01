@@ -19,11 +19,11 @@ public class Publication {
 	public Publication() {
 	}
 
-	public ResultSet getAuthorsSet() throws SQLException {
+	public AuthorSet getAuthorSet() throws SQLException {
 		return DbHelper.getAuthorsByPublicationIdSet(id);
 	}
 	
-	public ResultSet getSubjectsSet() throws SQLException {
+	public SubjectSet getSubjectSet() throws SQLException {
 		return DbHelper.getSubjectsByPublicationIdSet(id);
 	}
 	
