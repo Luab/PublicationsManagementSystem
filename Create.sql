@@ -224,4 +224,6 @@ CREATE  INDEX authorshipA_ID_lookup
 ON authorship (author_id);
 --
 CREATE INDEX gin_search on PUBLICATION USING GIN(SEARCHABLE);
-
+--
+CREATE  INDEX venueP_id_lookup
+ON publication (venue_id);
