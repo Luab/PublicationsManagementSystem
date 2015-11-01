@@ -161,7 +161,37 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+----------------------------
+CREATE OR REPLACE FUNCTION authors_for(pub_id INT)
+  RETURNS TABLE(id INTEGER) AS $$
+DECLARE
 
+BEGIN
+  RETURN QUERY SELECT AP.author_id
+               FROM authorship AS AP
+               WHERE
+                AP.publication_id=pub_id;
+
+END
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION related_by_author(pub_id INT)
+  RETURNS TABLE(id INTEGER) AS $$
+DECLARE
+
+BEGIN
+  RETURN QUERY SELECT AP.publication_id
+               FROM authorship AS AP, authors_for(pub_id)
+               WHERE
+                  AP.author_id=authors_for.id
+               AND
+      AP.author_id!=pub_id
+         
+               LIMIT 10;
+
+END
+$$ LANGUAGE plpgsql;
 -----------------------------------------
 INDEXES
 -----------------------------------------

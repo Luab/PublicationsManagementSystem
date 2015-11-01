@@ -23,5 +23,12 @@ AND A.author_name LIKE '%John%';
 ----------------------------------------
 --Поиск релевантных артиклов
 ----------------------------------------
-SELECT P.publication_title, vector_text_for_publication(P.publication_ID), P.description, P.datePublished  FROM publication as P, related_by_subject(6002)
+--По роду деятельнссти
+SELECT DISTINCT P.publication_title, vector_text_for_publication(P.publication_ID), P.description, P.datePublished  FROM publication as P, related_by_subject(6002)
 WHERE related_by_subject.id = P.publication_id;
+
+--По автору
+SELECT DISTINCT P.publication_title, vector_text_for_publication(P.publication_ID), P.description, P.datePublished  FROM publication as P, related_by_author(6050)
+WHERE related_by_author.id = P.publication_id;
+
+
