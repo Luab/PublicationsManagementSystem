@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 public class DbHelper {
 
-	static final String DB_URL = "jdbc:postgresql://10.240.17.63:5432/student";
+	static final String DB_URL = "jdbc:postgresql://localhost:5432/student";
 	static final String DB_USER = "student";
 	static final String DB_PASS = "student";
 
