@@ -214,7 +214,44 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <!-- /.table-responsive -->
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Releated Articles
+                                                </div>
+                                                <!-- /.panel-heading -->
+                                                <div class="panel-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Title</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <%
+                                                                PublicationSet rel =
+                                                                while (rel.next()) {
+                                                                    Publication publication = rel.getPublication();
+                                                                    Integer pid = publication.getId();
+                                                                    %>
+                                                            <tr>
+                                                                <td><%out.print(x);%></td>
+                                                                <td><a href="author.jsp?id=<%=pid%>"><%=publication.getTitle()%>
+                                                                </a></td>
+                                                            </tr>
+                                                            <%
+                                                                    x++;
+                                                                }
+                                                            %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <!-- /.table-responsive -->
                                 </div>
                                 <!-- /.panel-body -->
                             </div>

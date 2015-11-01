@@ -155,7 +155,7 @@
                                     </td>
                                     <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getTitle()%>
                                     </a></td>
-                                    <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getDescription()%>
+                                    <td><a href="publication.jsp?id=<%=pid%>"><%="..."+publ.getDescription()+"..."%>
                                     </a></td>
                                     <td>
                                         <%
