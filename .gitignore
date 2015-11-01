@@ -42,6 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-out/
-build/
+out
+build
 src/ru/pumas/DbCredentials.java
+src\ru\pumas\DbCredentials.java
