@@ -223,5 +223,5 @@ ON authorship (publication_id);
 CREATE  INDEX authorshipA_ID_lookup
 ON authorship (author_id);
 --
-
+CREATE INDEX gin_search on PUBLICATION USING GIN(SEARCHABLE);
 
