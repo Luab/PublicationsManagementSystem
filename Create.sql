@@ -1,3 +1,7 @@
+------------------------
+--CREATE TABLE QUERIES
+------------------------
+
 CREATE TABLE author (
   author_name VARCHAR(255) NOT NULL UNIQUE,
  amount_of_publications INTEGER DEFAULT 0,
@@ -28,7 +32,6 @@ number_of_authors INTEGER DEFAULT 0,
     CONSTRAINT UpdatedAfterPublished CHECK (dateUpdated >= publication.datePublished)
 );
 
-
 CREATE TABLE authorship (
   author_id      INTEGER REFERENCES author ON UPDATE CASCADE ON DELETE CASCADE,
   publication_id INTEGER REFERENCES publication ON UPDATE CASCADE ON DELETE CASCADE
@@ -49,7 +52,42 @@ CREATE TABLE keyword_in (
   publication_id INTEGER REFERENCES publication ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+-----------------------
+--TRIGGERS
+-----------------------
+CREATE TRIGGER make_ts
+    AFTER INSERT OR DELETE ON authorship
+    FOR EACH ROW
+    EXECUTE PROCEDURE make_searchable_text(); 
 
+CREATE TRIGGER make_ts2
+    AFTER INSERT OR DELETE ON written_on
+    FOR EACH ROW
+    EXECUTE PROCEDURE make_searchable_text();
+
+CREATE TRIGGER decrement_on_delete
+    AFTER DELETE ON authorship
+    FOR EACH ROW
+    EXECUTE PROCEDURE decrement();
+
+CREATE TRIGGER increment_on_add
+    AFTER INSERT ON authorship
+    FOR EACH ROW
+    EXECUTE PROCEDURE increment();
+
+CREATE TRIGGER dateUpdated_default
+  BEFORE INSERT ON publication
+  FOR EACH ROW
+  WHEN (NEW.dateUpdated IS NULL AND NEW.datePublished IS NOT NULL)
+  EXECUTE PROCEDURE dateUpdatedbydefault();
+
+------------------------
+--Functions for retrieving data and maintaining database
+------------------------
+
+----
+--1. Function which makes dateUpdated:=dateCreated if dateUpdated == null
+---
 
 CREATE OR REPLACE FUNCTION dateUpdatedbydefault()
   RETURNS TRIGGER AS
@@ -59,12 +97,9 @@ CREATE OR REPLACE FUNCTION dateUpdatedbydefault()
   END;
   $func$ LANGUAGE plpgsql;
 
-CREATE TRIGGER dateUpdated_default
-BEFORE INSERT ON publication
-FOR EACH ROW
-WHEN (NEW.dateUpdated IS NULL AND NEW.datePublished IS NOT NULL)
-EXECUTE PROCEDURE dateUpdatedbydefault();
-
+----
+--2.Add +1/+1 to amount_of_publications/number_of_authors if trigger increment_on_add is invoked
+---
 
 CREATE OR REPLACE FUNCTION increment()
   RETURNS trigger   AS $$
@@ -76,15 +111,13 @@ WHERE publication_id=new.publication_id;
 UPDATE author 
    SET amount_of_publications = amount_of_publications + 1
 WHERE author_id=new.author_id;
- RAISE NOTICE 'DONE';
 RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER increment_on_add
-    AFTER INSERT ON authorship
-    FOR EACH ROW
-    EXECUTE PROCEDURE increment();
+----
+--3.Add -1/-1 to amount_of_publications/number_of_authors if trigger decrement_on_delete is invoked
+---
 
  CREATE OR REPLACE FUNCTION decrement()
  RETURNS TRIGGER  AS $$
@@ -96,18 +129,13 @@ WHERE publication_id=old.publication_id;
 UPDATE author 
    SET amount_of_publications = amount_of_publications - 1
 WHERE author_id=old.author_id;
- RAISE NOTICE 'DONE';
  RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER decrement_on_delete
-    AFTER DELETE ON authorship
-    FOR EACH ROW
-    EXECUTE PROCEDURE decrement();
-
- 
-  
+----
+--4. Functions recalculate the tsvector to keep data consistency if triggers make_ts or make_ts2 invoked
+---
 
   CREATE OR REPLACE FUNCTION make_searchable_text()
  RETURNS TRIGGER  AS $$
@@ -127,16 +155,9 @@ RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
-
-CREATE TRIGGER make_ts
-    AFTER INSERT OR DELETE ON authorship
-    FOR EACH ROW
-    EXECUTE PROCEDURE make_searchable_text();
-CREATE TRIGGER make_ts2
-    AFTER INSERT OR DELETE ON written_on
-    FOR EACH ROW
-    EXECUTE PROCEDURE make_searchable_text();
-
+----
+--5. Retrieve STRING with all subjects for this publication_ID
+----  
 
 CREATE OR REPLACE FUNCTION subjects_for_publicationID(id INT)
 RETURNS TEXT AS $$
@@ -149,6 +170,10 @@ RETURN s;
 END
 $$ LANGUAGE plpgsql;
 
+----
+--6. Retrieve STRING with all authors for this publication_ID
+----
+
 CREATE OR REPLACE FUNCTION authors_for_publicationID(id INT)
 RETURNS TEXT AS $$
 DECLARE
@@ -159,6 +184,27 @@ SELECT string_agg(author_name, ' ') FROM author, authorship INTO s WHERE
 RETURN s;
 END
 $$ LANGUAGE plpgsql;
+
+----
+--5. Retrieve table with all author_id s for this publication_ID
+----
+
+CREATE OR REPLACE FUNCTION authors_for(pub_id INT)
+  RETURNS TABLE(id INTEGER) AS $$
+DECLARE
+
+BEGIN
+  RETURN QUERY SELECT AP.author_id
+               FROM authorship AS AP
+               WHERE
+                AP.publication_id=pub_id;
+
+END
+$$ LANGUAGE plpgsql;
+
+----
+--5. Retrieve STRING with venue for this publication_ID
+----
 
 CREATE OR REPLACE FUNCTION venue_for_publicationID(id INT)
 RETURNS TEXT AS $$
@@ -173,8 +219,11 @@ $$ LANGUAGE plpgsql;
 
 
 ----------------------------------
---RELATED ARTICLES 
--------------------------
+--RELATED ARTICLES FUNCTIONS
+----------------------------------
+----
+--1. Related articles by looking for publications written in same period at same subject
+----
 CREATE OR REPLACE FUNCTION related_by_subject(pub_id INT)
   RETURNS TABLE(id INTEGER) AS $$
 DECLARE
@@ -200,21 +249,9 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-----------------------------
-CREATE OR REPLACE FUNCTION authors_for(pub_id INT)
-  RETURNS TABLE(id INTEGER) AS $$
-DECLARE
-
-BEGIN
-  RETURN QUERY SELECT AP.author_id
-               FROM authorship AS AP
-               WHERE
-                AP.publication_id=pub_id;
-
-END
-$$ LANGUAGE plpgsql;
-
-
+----
+--2. Related articles by looking for articles among all authors of this publication
+----
 CREATE OR REPLACE FUNCTION related_by_author(pub_id INT)
   RETURNS TABLE(id INTEGER) AS $$
 DECLARE
@@ -231,9 +268,14 @@ BEGIN
 
 END
 $$ LANGUAGE plpgsql;
+
 -----------------------------------------
 --INDEXES
 -----------------------------------------
+
+----
+--B tree indexes
+----
 
 CREATE UNIQUE INDEX publicationID
 ON publication (publication_id);
@@ -250,19 +292,22 @@ ON subject (subject_id);
 CREATE UNIQUE INDEX keyword_ID
 ON keyword (keyword_id);
 
---------------------------------------
-
 CREATE  INDEX writtenP_ID_lookup
 ON written_on (publication_id);
 CREATE  INDEX writtenS_ID_lookup
 ON written_on (subject_id);
---
+
 CREATE  INDEX authorshipP_ID_lookup
 ON authorship (publication_id);
 CREATE  INDEX authorshipA_ID_lookup
 ON authorship (author_id);
---
-CREATE INDEX gin_search on PUBLICATION USING GIN(SEARCHABLE);
---
+
 CREATE  INDEX venueP_id_lookup
 ON publication (venue_id);
+
+----
+--GIN index for full text search
+----
+
+CREATE INDEX gin_search on PUBLICATION USING GIN(SEARCHABLE);
+
