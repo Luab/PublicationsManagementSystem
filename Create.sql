@@ -184,13 +184,14 @@ ON keyword (keyword_id);
 --------------------------------------
 
 CREATE  INDEX writtenP_ID_lookup
-ON authorship (publication_id);
-CREATE  INDEX writtenA_ID_lookup
-ON authorship (auhtor_id);
+ON written_on (publication_id);
+CREATE  INDEX writtenS_ID_lookup
+ON written_on (subject_id);
 --
-
 CREATE  INDEX authorshipP_ID_lookup
 ON authorship (publication_id);
 CREATE  INDEX authorshipA_ID_lookup
 ON authorship (auhtor_id);
+--
+
 
