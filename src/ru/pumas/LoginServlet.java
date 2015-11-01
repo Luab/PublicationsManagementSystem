@@ -21,9 +21,9 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("un");
-		String password = request.getParameter("pw");
-		if(name.equals("student") && password.equals("student") ) {
+		String name = request.getParameter("login");
+		String password = request.getParameter("password");
+		if(name.equals("student@innopolis") && password.equals("student") ) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", name);
 			response.sendRedirect("main.jsp");
