@@ -102,7 +102,7 @@ public class DbContract {
 				+ COLUMN_ID;
 		public static final String COLUMN_NAME = "venue_name";
 		public static final String FULL_COLUMN_NAME = TABLE_NAME + "."
-				+ COLUMN_ID;
+				+ COLUMN_NAME;
 	}
 
 	static final class KeywordsTable {

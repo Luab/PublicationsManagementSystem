@@ -678,13 +678,14 @@ public class DbHelper {
 			throws SQLException {
 		String sql = selectWhatFromWhere(
 				new String[] { DbContract.PublicationsTable.ALL_COLUMNS },
-				new String[] { DbContract.AuthorsTable.TABLE_NAME,
+				new String[] { DbContract.PublicationsTable.TABLE_NAME,
 						DbContract.VenuesTable.TABLE_NAME },
 				DbContract.PublicationsTable.FULL_COLUMN_VENUE_ID + " = "
 						+ DbContract.VenuesTable.FULL_COLUMN_ID + " AND " +
 						DbContract.VenuesTable.FULL_COLUMN_NAME + " ILIKE ?");
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + s + "%");
+		System.err.println(preparedStatement);
 		return new PublicationSet(preparedStatement.executeQuery());
 	}
 
