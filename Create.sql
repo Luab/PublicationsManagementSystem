@@ -111,7 +111,7 @@ CREATE TRIGGER decrement_on_delete
  RETURNS TRIGGER  AS $$
 BEGIN
 UPDATE publication 
-   SET searchable =  to_tsvector('english', vector_text_for_publication(publication_id)||' '||coalesce(publication_title,'')||' '||coalesce(description,' '))
+   SET searchable =  to_tsvector('english', authors_for_publicationID(publication_id)||' '||coalesce(publication_title,'')||' '||coalesce(description,' '))
 WHERE publication_id=new.publication_id;
 
  RETURN NULL;
@@ -123,7 +123,7 @@ CREATE TRIGGER make_ts
     FOR EACH ROW
     EXECUTE PROCEDURE make_searchable_text();
     
-CREATE OR REPLACE FUNCTION vector_text_for_publication(id INT)
+CREATE OR REPLACE FUNCTION authors_for_publicationID(id INT)
 RETURNS TEXT AS $$
 DECLARE
 s TEXT;
@@ -133,7 +133,37 @@ SELECT string_agg(author_name, ' ') FROM author, authorship INTO s WHERE
 RETURN s;
 END
 $$ LANGUAGE plpgsql;
+----------------------------------
+RELATED ARTICLES 
+-------------------------
+CREATE OR REPLACE FUNCTION related_by_subject(pub_id INT)
+  RETURNS TABLE(id INTEGER) AS $$
+DECLARE
 
+BEGIN
+  RETURN QUERY SELECT P.publication_id
+               FROM publication AS P, written_on AS PS
+               WHERE
+                 PS.subject_id = (SELECT subject_id
+                                  FROM written_on
+                                  WHERE publication_id = pub_id
+                                  LIMIT 1)
+                 AND
+                 PS.publication_id != pub_id
+                 AND
+                 PS.publication_id = P.publication_ID
+               ORDER BY @((SELECT datePublished
+                           FROM publication
+                           WHERE publication_id = pub_id
+                           LIMIT 1) - datePublished) ASC
+               LIMIT 10;
+
+END
+$$ LANGUAGE plpgsql;
+
+
+-----------------------------------------
+INDEXES
 -----------------------------------------
 
 CREATE UNIQUE INDEX publicationID
