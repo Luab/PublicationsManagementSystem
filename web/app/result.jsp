@@ -1,12 +1,9 @@
-<%@ page import="ru.pumas.DbHelper" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="ru.pumas.Publication" %>
 <%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.ResultSetMetaData" %>
 <%@page import="java.sql.SQLException" %>
 
-<%@page import="ru.pumas.Author" %>
-<%@page import="ru.pumas.Subject" %>
+<%@ page import="ru.pumas.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,7 +129,7 @@
                                 <tbody>
                                 <%
                                     int i = 0;
-                                    ResultSet rs = null;
+                                    PublicationSet rs = null;
                                     if (search == null) {
                                         rs = DbHelper.getPublicationsSet();
                                     } else {
@@ -150,7 +147,7 @@
                                         Publication publ = Publication.from(rs);
                                         i++;
                                         Integer pid = publ.getId();
-                                        ResultSet auth = DbHelper.getAuthorsByPublicationIdSet(publ.getId());
+                                        AuthorSet auth = DbHelper.getAuthorsByPublicationIdSet(publ.getId());
                                 %>
                                 <tr>
                                     <td><%=i%>
@@ -160,7 +157,7 @@
                                     <td>
                                         <%
                                             while (auth.next()) {
-                                                Author author = Author.from(auth);
+                                                Author author = auth.getAuthor;
                                                 Integer aid = author.getId();
                                         %>
                                         <a href="author.jsp?id=<%=aid%>"><%=author.getName()%>

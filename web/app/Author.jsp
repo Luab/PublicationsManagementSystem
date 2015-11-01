@@ -1,12 +1,9 @@
-<%@ page import="ru.pumas.DbHelper" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="ru.pumas.Publication" %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.SQLException"%>
 
-<%@page import="ru.pumas.Author"%>
-<%@page import="ru.pumas.Subject"%>
+<%@ page import="ru.pumas.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,9 +136,9 @@
                         <%
                           Integer x = 1;
                           Integer aid=0;
-                          ResultSet publications = DbHelper.getPublicationSetByAuthorId(i); //TODO: Fill it in
+                          PublicationSet publications = DbHelper.getPublicationSetByAuthorId(i); //TODO: Fill it in
                           while (publications.next()){
-                            Publication publ = Publication.from(publications);
+                            Publication publ = publications.getPublication();
                             aid = publ.getId();                %>
                         <tr onclick="Publication.jsp" method="post">
                           <td><%out.print(x);%></td>
