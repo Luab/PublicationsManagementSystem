@@ -19,12 +19,12 @@ import javax.servlet.http.HttpSession;
 @WebFilter("/app/*")
 public class LoginFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public LoginFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public LoginFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -36,16 +36,15 @@ public class LoginFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		 HttpServletRequest req = (HttpServletRequest) request;
-	        HttpServletResponse res = (HttpServletResponse) response;
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
 
-	        HttpSession session = req.getSession(false);
-	        if (session == null || session.getAttribute("user") == null) {
-	            res.sendRedirect(req.getContextPath() + "/Main.jsp");
-	        } else {
-	            chain.doFilter(req, res);
-	        }
+		HttpSession session = req.getSession(false);
+		if (session == null || session.getAttribute("user") == null) {
+			res.sendRedirect(req.getContextPath() + "/index.jsp");
+		}
 		chain.doFilter(req, res);
 	}
 
