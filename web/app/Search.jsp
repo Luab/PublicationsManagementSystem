@@ -45,7 +45,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="Main.jsp">Publication Managment System</a>
+      <a class="navbar-brand" href="Search.jsp">Publication Managment System</a>
     </div>
     <!-- /.navbar-header -->
     <!-- /.navbar-top-links -->
@@ -55,7 +55,7 @@
         <ul class="nav" id="side-menu">
             <!-- /input-group -->
           <li>
-            <a href="Main.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
+            <a href="Search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
             <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>

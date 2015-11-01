@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		if(name.equals("student@innopolis") && password.equals("student") ) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", name);
-			response.sendRedirect("/app/Search.jsp");
+			response.sendRedirect(request.getContextPath()+ "/app/Search.jsp");
 		} else {
 			response.sendRedirect("error.jsp?from=\"invalid login\"");
 		}

@@ -43,7 +43,7 @@
           <h3 class="panel-title">Please Sign In</h3>
         </div>
         <div class="panel-body">
-          <form action="app/Main.jsp" role="form" method="post">
+          <form action="app/Search.jsp" role="form" method="post">
             <fieldset>
               <div class="form-group">
                 <input class="form-control" placeholder="Login" name="login" type="email" autofocus>
