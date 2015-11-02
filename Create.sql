@@ -137,20 +137,26 @@ $$ LANGUAGE plpgsql;
 --4. Functions recalculate the tsvector to keep data consistency if triggers make_ts or make_ts2 invoked
 ---
 
-  CREATE OR REPLACE FUNCTION make_searchable_text()
- RETURNS TRIGGER  AS $$
+CREATE OR REPLACE FUNCTION make_searchable_text()
+RETURNS TRIGGER AS $$
 BEGIN
-UPDATE publication 
-   SET searchable =  to_tsvector(
-      'english',
-             coalesce(authors_for_publicationID (publication_id),' ')
-      ||' '||coalesce(publication_title,' ')
-      ||' '||coalesce(description,' ')
-      ||' '||coalesce(subjects_for_publicationID  (publication_id),' ')
-      ||' '||coalesce(venue_for_publicationID     (publication_id),' ')
-      )
+IF EXISTS (
+SELECT 1
+FROM publication p
+WHERE p.publication_id = OLD.publication_id) THEN
+
+UPDATE publication
+SET searchable = to_tsvector(
+'english',
+coalesce(authors_for_publicationID (publication_id),' ')
+||' '||coalesce(publication_title,' ')
+||' '||coalesce(description,' ')
+||' '||coalesce(subjects_for_publicationID (publication_id),' ')
+||' '||coalesce(venue_for_publicationID (publication_id),' ')
+)
 WHERE publication_id=new.publication_id;
 
+END if;
 RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;

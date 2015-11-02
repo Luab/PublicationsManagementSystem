@@ -663,7 +663,8 @@ public class DbHelper {
 				new String[] { DbContract.AuthorsTable.TABLE_NAME,
 						DbContract.PublicationsTable.TABLE_NAME,
 						DbContract.PublicationAuthorsTable.TABLE_NAME },
-				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID + "=" +
+				DbContract.PublicationAuthorsTable.FULL_COLUMN_PUBLICATION_ID
+						+ "=" +
 						DbContract.PublicationsTable.FULL_COLUMN_ID + " AND " +
 						DbContract.PublicationAuthorsTable.FULL_COLUMN_AUTHOR_ID
 						+ "=" +
@@ -722,6 +723,14 @@ public class DbHelper {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		return new PublicationSet(preparedStatement.executeQuery());
+	}
+
+	public static void deletePublicationById(int id) throws SQLException {
+		String sql = "DELETE FROM " + DbContract.PublicationsTable.TABLE_NAME
+				+ " WHERE " + DbContract.PublicationsTable.COLUMN_ID + " = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		preparedStatement.execute();
 	}
 
 }
