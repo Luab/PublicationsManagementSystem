@@ -121,6 +121,16 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        <button class="btn btn-default" onclick="confirm_decision('<%=i%>')">Delete Publication</button>
+        <script>function confirm_decision(publication_id){
+            if(confirm("Do you want to delete the publication? This action cannot be unodne")) // this will pop up confirmation box and if yes is clicked it call servlet else return to page
+            {
+                window.location="DeletePublicationServlet?id="+publication_id;
+            }else{
+                return false;
+            }
+            return true;
+        }</script>
         <div class="form-group">
             <label>Description</label>
 
@@ -239,7 +249,7 @@
                                                                     %>
                                                             <tr>
                                                                 <td><%out.print(x);%></td>
-                                                                <td><a href="author.jsp?id=<%=pid%>"><%=publication.getTitle()%>
+                                                                <td><a href="publication.jsp?id=<%=pid%>"><%=publication.getTitle()%>
                                                                 </a></td>
                                                             </tr>
                                                             <%

@@ -118,32 +118,40 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-lg-6">
-            <form role="form">
+            <form role="form" action="AddPublicationServlet">
               <div class="form-group">
-                <label>Publication Title</label>
-                <input class="form-control" placeholder="Enter title">
+                <label>Publication Title*</label>
+                <input name="title" class="form-control" placeholder="Enter title">
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea name="Description" class="form-control" rows="3"></textarea>
               </div>
               <div class="123">
-                <label>Authors</label>
-                <input class="form-control" placeholder="Enter author name">
+                <label>Authors*</label>
+                <input name="Authors" class="form-control" placeholder="Enter author name">
+              </div>
+              <div class="123">
+                <label>Date updated*</label>
+                <input name="dateupdated" class="form-control" placeholder="Enter date">
+              </div>
+              <div class="123">
+                <label>Date created*</label>
+                <input name="datecreated" class="form-control" placeholder="Enter date">
               </div>
               <div class="form-group">
                 <label>Subjects</label>
-                <input class="form-control" placeholder="Enter subject">
+                <input name="Subjects" class="form-control" placeholder="Enter subject">
               </div>
               <div class="form-group">
                 <label>DOI</label>
-                <input class="form-control" placeholder="Enter doi">
+                <input name="DOI" class="form-control" placeholder="Enter doi">
               </div>
               <div class="form-group">
                 <label>Venue</label>
-                <input class="form-control" placeholder="Enter venue">
+                <input name="venue" class="form-control" placeholder="Enter venue">
               </div>
-              <button type="submit" class="btn btn-default" onclick="">Submit Button</button>
+              <button type="submit" class="btn btn-default">Submit Button</button>
             </form>
           </div>
           </div>

@@ -23,114 +23,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="publication.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/publication.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addpublication.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/addpublication.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="author.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/author.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="authors.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app/authors.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.142857">
+            <state vertical-scroll-proportion="-3.857143">
               <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subject.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Addpublication.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/app/Addpublication.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="139" column="86" selection-start-line="139" selection-start-column="86" selection-end-line="139" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddPublicationServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5691906">
+              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="subject.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5276243">
-              <caret line="142" column="67" selection-start-line="142" selection-start-column="67" selection-end-line="142" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/search.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tem.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/tem.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.023809">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/template.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/pumas/DbHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="462" column="29" selection-start-line="462" selection-start-column="29" selection-end-line="462" selection-end-column="29" />
-              <folding>
-                <marker date="1446410599566" expanded="true" signature="2034:2153" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="2613:2840" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="3311:3542" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="4015:4216" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="4646:4767" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="5154:5267" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="6685:6805" placeholder="SELECT * FRO..subject..." />
-                <marker date="1446410599566" expanded="true" signature="7435:7551" placeholder="SELECT * FRO..venue..." />
-                <marker date="1446410599566" expanded="true" signature="8855:8978" placeholder="SELECT * FRO..keyword..." />
-                <marker date="1446410599566" expanded="true" signature="9299:9423" placeholder="INSERT INTO ..." />
-                <marker date="1446410599566" expanded="true" signature="9831:9957" placeholder="SELECT * FRO..publication..." />
-                <marker date="1446410599566" expanded="true" signature="10420:10534" placeholder="SELECT * FRO..venue..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="result.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/result.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="219" column="49" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
+            <state vertical-scroll-proportion="-1.2619047">
+              <caret line="127" column="19" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -142,6 +69,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -166,21 +94,24 @@
         <option value="$PROJECT_DIR$/web/result.jsp" />
         <option value="$PROJECT_DIR$/web/subject.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/web/app/Addpublication.jsp" />
         <option value="$PROJECT_DIR$/web/app/Main.jsp" />
         <option value="$PROJECT_DIR$/src/ru/pumas/LoginFilter.java" />
         <option value="$PROJECT_DIR$/src/ru/pumas/DbHelper.java" />
         <option value="$PROJECT_DIR$/web/sb-admin-2/forms.html" />
         <option value="$PROJECT_DIR$/src/ru/pumas/LoginServlet.java" />
         <option value="$PROJECT_DIR$/web/app/search.jsp" />
-        <option value="$PROJECT_DIR$/web/app/publication.jsp" />
         <option value="$PROJECT_DIR$/web/app/subject.jsp" />
         <option value="$PROJECT_DIR$/web/app/Publication.jsp" />
         <option value="$PROJECT_DIR$/src/ru/pumas/PublicationSet.java" />
         <option value="$PROJECT_DIR$/web/app/addpublication.jsp" />
         <option value="$PROJECT_DIR$/web/app/author.jsp" />
-        <option value="$PROJECT_DIR$/web/app/result.jsp" />
         <option value="$PROJECT_DIR$/web/app/authors.jsp" />
+        <option value="$PROJECT_DIR$/src/ru/pumas/DbCredentials.java" />
+        <option value="$PROJECT_DIR$/src/ru/pumas/DeletePublicationServlet.java" />
+        <option value="$PROJECT_DIR$/web/app/result.jsp" />
+        <option value="$PROJECT_DIR$/web/app/publication.jsp" />
+        <option value="$PROJECT_DIR$/web/app/Addpublication.jsp" />
+        <option value="$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java" />
       </list>
     </option>
   </component>
@@ -191,9 +122,9 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" value=" &#9;at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103) &#9;at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:366) &#9;at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:485)" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
+    <option name="CUSTOM_FILTER" value="" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -235,6 +166,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -290,9 +222,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pumas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,7 +283,7 @@
       <recent name="C:\coding\PublicationsManagementSystem\web\audio" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.TomCat">
+  <component name="RunManager" selected="JavaScript Debug.Addpublication.jsp">
     <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Test" />
@@ -334,9 +297,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="PublicationsManagementSystem" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="sample.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/MathJax-master/test/sample.html">
       <method />
     </configuration>
     <configuration default="false" name="Author.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 7.0.64" ALTERNATIVE_JRE_ENABLED="false">
@@ -420,6 +380,9 @@
           <artifact name="PublicationsManagementSystem:war exploded" />
         </option>
       </method>
+    </configuration>
+    <configuration default="false" name="Addpublication.jsp" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/app/Addpublication.jsp">
+      <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
@@ -843,18 +806,18 @@
       <item index="0" class="java.lang.String" itemvalue="GlassFish Server.123" />
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.TomCat" />
       <item index="2" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.sample.html" />
-      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.Author.jsp" />
-      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.author.jsp" />
-      <item index="6" class="java.lang.String" itemvalue="Tomcat Server.forms.html" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.Author.jsp" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.author.jsp" />
+      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.forms.html" />
+      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.Addpublication.jsp" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Tomcat Server.forms.html" />
-        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Author.jsp" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.author.jsp" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Test" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.sample.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Addpublication.jsp" />
+        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.forms.html" />
+        <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Author.jsp" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.author.jsp" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -896,12 +859,13 @@
       <workItem from="1446386551577" duration="1338000" />
       <workItem from="1446389498303" duration="1218000" />
       <workItem from="1446396379858" duration="4440000" />
-      <workItem from="1446409877502" duration="1808000" />
+      <workItem from="1446409877502" duration="2284000" />
+      <workItem from="1446460192882" duration="5790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43729000" />
+    <option name="totallyTimeSpent" value="49995000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1005,14 +969,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/app/result.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="74" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1033,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,7 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,7 +1011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,34 +1027,19 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
           <folding>
-            <marker date="1446410599566" expanded="true" signature="2034:2153" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="2613:2840" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="3311:3542" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="4015:4216" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="4646:4767" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="5154:5267" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="6685:6805" placeholder="SELECT * FRO..subject..." />
-            <marker date="1446410599566" expanded="true" signature="7435:7551" placeholder="SELECT * FRO..venue..." />
-            <marker date="1446410599566" expanded="true" signature="8855:8978" placeholder="SELECT * FRO..keyword..." />
-            <marker date="1446410599566" expanded="true" signature="9299:9423" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="9831:9957" placeholder="SELECT * FRO..publication..." />
-            <marker date="1446410599566" expanded="true" signature="10420:10534" placeholder="SELECT * FRO..venue..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..subject..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..venue..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..keyword..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..publication..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..venue..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/sb-admin-2/tables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1137" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/sb-admin-2/forms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="588" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1223,13 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/sb-admin-2/blank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/tem.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1237,26 +1168,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/startbootstrap-master/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/sb-admin-2/tables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,9 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding>
-            <element signature="e#316#317#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1281,22 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056847546">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/sb-admin-2/forms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7380953">
-          <caret line="380" column="24" selection-start-line="380" selection-start-column="24" selection-end-line="380" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/pumas/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="17" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,15 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.78571427">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1328,10 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#343#344#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1340,67 +1223,19 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="462" column="29" selection-start-line="462" selection-start-column="29" selection-end-line="462" selection-end-column="29" />
           <folding>
-            <marker date="1446410599566" expanded="true" signature="2034:2153" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="2613:2840" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="3311:3542" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="4015:4216" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="4646:4767" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="5154:5267" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="6685:6805" placeholder="SELECT * FRO..subject..." />
-            <marker date="1446410599566" expanded="true" signature="7435:7551" placeholder="SELECT * FRO..venue..." />
-            <marker date="1446410599566" expanded="true" signature="8855:8978" placeholder="SELECT * FRO..keyword..." />
-            <marker date="1446410599566" expanded="true" signature="9299:9423" placeholder="INSERT INTO ..." />
-            <marker date="1446410599566" expanded="true" signature="9831:9957" placeholder="SELECT * FRO..publication..." />
-            <marker date="1446410599566" expanded="true" signature="10420:10534" placeholder="SELECT * FRO..venue..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..subject..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..venue..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..keyword..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..publication..." />
+            <marker date="1446410599566" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..venue..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/addpublication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/author.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/publication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/result.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="219" column="49" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/search.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/tem.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.023809">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1412,9 +1247,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/tem.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.616622">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/pumas/DbCredentials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30156657">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/Author.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41022098">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/publication.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40745857">
+          <caret line="123" column="56" selection-start-line="123" selection-start-column="56" selection-end-line="123" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3538874">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/result.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.029490616">
+          <caret line="149" column="41" selection-start-line="149" selection-start-column="41" selection-end-line="149" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38337803">
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/app/authors.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.142857">
+        <state vertical-scroll-proportion="-3.857143">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding />
         </state>
@@ -1422,8 +1313,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5276243">
-          <caret line="142" column="67" selection-start-line="142" selection-start-column="67" selection-end-line="142" selection-end-column="67" />
+        <state vertical-scroll-proportion="-1.2619047">
+          <caret line="127" column="19" selection-start-line="127" selection-start-column="19" selection-end-line="127" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/pumas/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68217057">
+          <caret line="30" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/pumas/DeletePublicationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22739018">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/Addpublication.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="139" column="86" selection-start-line="139" selection-start-column="86" selection-end-line="139" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5691906">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
           <folding />
         </state>
       </provider>

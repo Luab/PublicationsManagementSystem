@@ -218,14 +218,6 @@
 <script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').dataTable();
-    });
-    $('.table > td').click(function () {
-        alert("OH MY GOD THAT'S SOME FANCY SHIT!")
-    });
-</script>
 
 </body>
 
