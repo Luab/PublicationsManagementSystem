@@ -6,7 +6,8 @@ import ru.pumas.PublicationSet;
 public class Test {
 
 	public static void main(String[] args) throws SQLException {
-		PublicationSet rs = DbHelper.searchPublicationsByVenueSubstsring("qwe");
+		DbHelper.deletePublicationById(124);
+		PublicationSet rs = DbHelper.getPublicationSetById(124);
 		
 		while(rs.next()) {
 			System.out.println(rs.getPublication());
