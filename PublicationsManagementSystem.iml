@@ -70,5 +70,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="org.postgresql.jdbc4-8.3-603" level="project" />
+    <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" name="respond" level="application" />
   </component>
 </module>

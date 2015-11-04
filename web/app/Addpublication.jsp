@@ -88,11 +88,13 @@
             <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+            <a class="active" href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
           </li>
           <li>
             <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
+
+          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
           <!-- /.nav-second-level -->
         </ul>
       </div>

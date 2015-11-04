@@ -24,7 +24,7 @@ public class DeletePublicationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = Integer.parseInt(request.getParameter("id"));
         try {
-            System.out.print(DbHelper.getPublicationById(id).getTitle()); //TODO: Fill with norm
+            DbHelper.deletePublicationById(id);
             response.sendRedirect("search.jsp");
         } catch (SQLException e) {
             response.sendRedirect("error.jsp?from=No such publication");

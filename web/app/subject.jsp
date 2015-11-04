@@ -4,6 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 
 <%@ page import="ru.pumas.*" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,14 +83,15 @@
             <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
           </li>
           <li>
-            <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
+            <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+            <a class="active" href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
           </li>
           <li>
-            <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+            <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
+          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
           <!-- /.nav-second-level -->
         </ul>
       </div>
@@ -105,7 +107,7 @@
         <%
           Integer i;
           String par = request.getParameter("id");
-          if (par == ""){
+          if (Objects.equals(par, "")){
             response.sendRedirect("error.jsp?from=\"No such subject\"");
             i=1;
           }
@@ -117,7 +119,6 @@
         <h1 class="page-header">Subject</h1>
       </div>
       <!-- /.col-lg-12 -->
-    </div>
   <div class="row">
     <div class="col-lg-6">
       <div class="panel panel-default">
@@ -161,13 +162,13 @@
     </div>
     <!-- /.col-lg-6 -->
 
-  </div>
-  <!-- /.row -->
-</div>
 <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
+    </div>
+  </div>
+</div>
 
 <!-- jQuery Version 1.11.0 -->
 <script src="../js/jquery-1.11.0.js"></script>
@@ -182,15 +183,6 @@
 <script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-  $(document).ready(function() {
-    $('#dataTables-example').dataTable();
-  });
-  $('.table > td').click(function() {
-    alert("OH MY GOD THAT'S SOME FANCY SHIT!")
-  });
-</script>
-
 </body>
 
 </html>

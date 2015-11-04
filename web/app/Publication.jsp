@@ -4,6 +4,7 @@
 <%@page import="java.sql.SQLException" %>
 
 <%@ page import="ru.pumas.*" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,14 +85,16 @@
                         <a href="search.jsp"><i class="fa fa-search fa-fw"></i>Publication search</a>
                     </li>
                     <li>
-                        <a href="Authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
+                        <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
                     </li>
                     <li>
-                        <a class="active" href="Subject.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+                        <a class="active" href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
                     </li>
                     <li>
-                        <a class="active" href="Venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+                        <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
                     </li>
+
+                    <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
                     <!-- /.nav-second-level -->
                 </ul>
             </div>
@@ -107,7 +110,7 @@
                 <%
                     Integer i;
                     String par = request.getParameter("id");
-                    if (par == "") {
+                    if (Objects.equals(par, "")) {
                         response.sendRedirect("error.jsp?from=\"No such publication\"");
                         i = 1;
                     } else {
@@ -146,7 +149,7 @@
               %>
             <label>Venue</label>
 
-            <p class="form-control-static"><%=publ.getVenue().getName()%>
+            <p class="form-control-static"><a href="venue.jsp?id=<%=publ.getVenue().getId()%>"><%=publ.getVenue().getName()%></a>
             </p>
                 <%}%>
             <div class="row">
@@ -274,6 +277,11 @@
                 </div>
                 <!-- /#page-wrapper -->
 
+                        </div>
+            </div>
+
+                </div>
+
             </div>
             <!-- /#wrapper -->
 
@@ -290,14 +298,6 @@
             <script src="../js/sb-admin-2.js"></script>
 
             <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-            <script>
-                $(document).ready(function () {
-                    $('#dataTables-example').dataTable();
-                });
-                $('.table > td').click(function () {
-                    alert("OH MY GOD THAT'S SOME FANCY SHIT!")
-                });
-            </script>
 
 </body>
 

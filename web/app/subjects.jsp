@@ -1,12 +1,9 @@
-<%@ page import="ru.pumas.DbHelper" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="ru.pumas.Publication" %>
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.SQLException"%>
 
-<%@page import="ru.pumas.Author"%>
-<%@page import="ru.pumas.Subject"%>
+<%@ page import="ru.pumas.*" %>
+<%@ page import="java.util.Objects" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,30 +100,30 @@
   </nav>
 
 
-  <div id="page-wrapper">
+  < id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
         <%
           Integer i;
-          String par = request.getParameter("id");
-          if (par == ""){
-            response.sendRedirect("error.jsp?from=\"No such author\"");
+          String par = "666";
+          if (Objects.equals(par, "")){
+            response.sendRedirect("error.jsp?from=\"No such venue\"");
             i=1;
           }
           else {
             i = Integer.parseInt(par);
           }
+          SubjectSet subs = DbHelper.getSubjectSet();
         %>
-        <h1 class="page-header">SampleName</h1>
+        <h1 class="page-header">Subjects</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
-  </div>
   <div class="row">
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          SampleTable
+          Subjects
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -141,14 +138,13 @@
               <tbody>
               <%
                 Integer x = 1;
-                Integer aid=0;
-                ResultSet publications = DbHelper.; //TODO: Fill it in
-                while (publications.next()){
-                  Publication publ = Publication.from(publications);
-                  aid = publ.getId();                %>
+                Integer sid =0;
+                while (subs.next()){
+                  Subject subject = subs.getSubject();
+                  sid = subject.getId();                %>
               <tr>
                 <td><%out.print(x);%></td>
-                <td><a href="<%=aid%>"><%=publ.getTitle()%></a> </td>
+                <td><a href="subject.jsp?id=<%=sid%>"><%=subject.getName()%></a> </td>
               </tr>
               <%
                   x++;
@@ -170,7 +166,6 @@
 </div>
 
 
-
 <script src="../js/jquery-1.11.0.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -187,3 +182,5 @@
 </body>
 
 </html>
+
+
