@@ -149,10 +149,10 @@
                                             rs = DbHelper.searchPublicationsByAuthorSubstring(search);
                                         }
                                         if (type.equals("subs")) {
-                                            rs = DbHelper.searchPublicationsByVenueSubstsring(search);
+                                            rs = DbHelper.searchPublicationsByVenueSubstring(search);
                                         }
                                         if (type.equals("ven")){
-                                            rs = DbHelper.searchPublicationsByVenueSubstsring(search);
+                                            rs = DbHelper.searchPublicationsByVenueSubstring(search);
                                         }
                                     }
                                     while (rs.next()) {
