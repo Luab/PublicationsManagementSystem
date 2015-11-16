@@ -90,7 +90,7 @@
           <li>
             <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
-          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
+          <li><a href="addpublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a></li>
           <!-- /.nav-second-level -->
         </ul>
       </div>
@@ -113,7 +113,7 @@
           else {
             i = Integer.parseInt(par);
           }
-          VenueSet ven = DbHelper.get;
+          VenueSet ven = DbHelper.getVenueSet();
         %>
         <h1 class="page-header">Venues</h1>
       </div>

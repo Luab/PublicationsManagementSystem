@@ -34,7 +34,7 @@ public class BotServlet extends HttpServlet {
         assert title != null;
         if (title.equals("true")) {
             Bot.run();
-            response.sendRedirect("/app/bot.jsp?state=" + title);
+            System.out.println("Bot started");
         }
         if (title.equals("false")) {
             Bot.run();

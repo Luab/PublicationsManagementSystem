@@ -94,7 +94,7 @@
             <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
 
-          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
+          <li><a href="addpublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a></li>
           <!-- /.nav-second-level -->
         </ul>
       </div>
@@ -134,11 +134,11 @@
                 <input name="Authors" class="form-control" placeholder="Enter author name">
               </div>
               <div class="123">
-                <label>Date updated*</label>
+                <label>Date updated* yyyy-[m]m-[d]d format pls</label>
                 <input name="dateupdated" class="form-control" placeholder="Enter date">
               </div>
               <div class="123">
-                <label>Date created*</label>
+                <label>Date created* yyyy-[m]m-[d]d format pls</label>
                 <input name="datecreated" class="form-control" placeholder="Enter date">
               </div>
               <div class="form-group">
