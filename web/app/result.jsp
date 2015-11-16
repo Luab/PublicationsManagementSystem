@@ -103,10 +103,14 @@
         String type = request.getParameter("optionsRadiosInline");
         String parsed = request.getParameter("offset");
         Integer offset;
+        final Integer limit = 10;
         if (parsed == null) {
             offset = 0;
         } else {
             offset = Integer.parseInt(request.getParameter("offset"));
+            if (offset < 0) {
+                offset = 0;
+            }
         }
     %>
 
@@ -137,22 +141,22 @@
                                 </thead>
                                 <tbody>
                                 <%
-                                    int i = 0;
+                                    int i = offset;
                                     PublicationSet rs = null;
                                     if (search == null) {
-                                        rs = DbHelper.getPublicationSet();
+                                        rs = DbHelper.getPublicationSet(offset, limit);
                                     } else {
                                         if (type.equals("ss")) {
-                                            rs = DbHelper.searchPublicationSet(search);
+                                            rs = DbHelper.searchPublicationSet(search, offset, limit);
                                         }
                                         if (type.equals("as")) {
-                                            rs = DbHelper.searchPublicationsByAuthorSubstring(search);
+                                            rs = DbHelper.searchPublicationsByAuthorSubstring(search, offset, limit);
                                         }
                                         if (type.equals("subs")) {
-                                            rs = DbHelper.searchPublicationsByVenueSubstring(search);
+                                            rs = DbHelper.searchPublicationsByVenueSubstring(search, offset, limit);
                                         }
                                         if (type.equals("ven")){
-                                            rs = DbHelper.searchPublicationsByVenueSubstring(search);
+                                            rs = DbHelper.searchPublicationsByVenueSubstring(search, offset, limit);
                                         }
                                     }
                                     while (rs.next()) {
@@ -182,11 +186,12 @@
                                 </tr>
                                 </tbody>
                                 <button type="submit" class="btn btn-default"><a
-                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset+1%>&request=<%=search%>">Next
+                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset-limit%>&request=<%=search%>">Previous
                                     page</a></button>
                                 <button type="submit" class="btn btn-default"><a
-                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset-1%>&request=<%=search%>">Previous
+                                        href="result.jsp?optionsRadiosInline=<%=type%>&offset=<%=offset+limit%>&request=<%=search%>">Next
                                     page</a></button>
+
                             </table>
                         </div>
                         <!-- /.table-responsive -->
