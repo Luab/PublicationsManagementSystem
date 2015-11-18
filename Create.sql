@@ -94,6 +94,7 @@ CREATE OR REPLACE FUNCTION dateUpdatedbydefault()
   $func$
   BEGIN
     NEW.dateUpdated :=NEW.datePublished;
+    RETURN NEW;
   END;
   $func$ LANGUAGE plpgsql;
 
@@ -140,6 +141,10 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION make_searchable_text()
 RETURNS TRIGGER AS $$
 BEGIN
+IF NOT EXISTS OLD THEN
+RETURN NEW;
+END IF;
+
 IF EXISTS (
 SELECT 1
 FROM publication p
@@ -156,7 +161,7 @@ coalesce(authors_for_publicationID (publication_id),' ')
 )
 WHERE publication_id=new.publication_id;
 
-END if;
+END IF;
 RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
