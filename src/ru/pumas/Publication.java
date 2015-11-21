@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Publication {
 
 	int id;
@@ -16,17 +19,33 @@ public class Publication {
 	String description;
 	int numberOfAuthors;
 
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject ret = new JSONObject();
+		ret.put("id", id);
+		ret.put("doi", doi);
+		ret.put("link", link);
+		ret.put("date_created", dateCreated.getTime());
+		ret.put("date_updated", dateUpdated.getTime());
+		if (venue != null) {
+			ret.put("venue", venue.toJSONObject());
+		}
+		ret.put("title", title);
+		ret.put("description", description);
+		ret.put("number_of_authors", numberOfAuthors);
+		return ret;
+	}
+
 	public Publication() {
 	}
 
 	public AuthorSet getAuthorSet() throws SQLException {
 		return DbHelper.getAuthorsByPublicationIdSet(id);
 	}
-	
+
 	public SubjectSet getSubjectSet() throws SQLException {
 		return DbHelper.getSubjectsByPublicationIdSet(id);
 	}
-	
+
 	public int getId() {
 		return id;
 	}

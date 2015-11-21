@@ -11,11 +11,12 @@ import java.text.DecimalFormat;
 public class Parser {
 	public static void main(String[] args)
 			throws IOException, SAXException, ParserConfigurationException {
-		int fileNo = 109; // Setting how many files programm will parse
+		int fileNo = 1073; // Setting how many files programm will parse
 		long t1 = 0;
 		String path;
-		for (int i = 64; i <= fileNo; i++) {
-			path = "xml_dumps/" + i;
+		for (int i = 1; i <= fileNo; i++) {
+			path = "records/" + i;
+			System.out.println("Trying " + path);
 
 			t1 = System.nanoTime();
 			if (ParseFromFile.openFile(path)) {
