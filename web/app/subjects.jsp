@@ -86,10 +86,10 @@
             <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
           </li>
           <li>
-            <a class="active" href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+            <a  href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
           </li>
           <li>
-            <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+<a  href="venues.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
           <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a></li>
           <!-- /.nav-second-level -->
@@ -130,7 +130,7 @@
       </div>
       <!-- /.col-lg-12 -->
     </div>
-  <div>
+
   <div class="row">
     <div class="col-lg-6">
       <div class="panel panel-default">
@@ -182,7 +182,7 @@
   </div>
   <!-- /.row -->
 </div>
-</div>
+
 
 <script src="../js/jquery-1.11.0.js"></script>
 

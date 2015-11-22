@@ -67,7 +67,16 @@ public class Bot {
     static List<Rule> rules = new ArrayList<>();
 
     static void makeRules() {
-
+        rules.add(new Rule() {
+            @Override
+            public boolean check(String txt, Message msg) throws IOException, SQLException {
+                if(txt.equals("/die")){
+                   isOn=false;
+                    return true;
+                }
+                return false;
+            }
+        });
         rules.add(new Rule() {
             @Override
             public boolean check(String txt, Message msg) throws IOException, SQLException {

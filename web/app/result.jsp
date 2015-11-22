@@ -87,10 +87,10 @@
                         <a href="authors.jsp"><i class="fa fa-users fa-fw"></i>Authors</a>
                     </li>
                     <li>
-                        <a class="active" href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
+                        <a  href="subjects.jsp"><i class="fa fa-folder-open-o fa-fw"></i>Subjects</a>
                     </li>
                     <li>
-                        <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
+            <a  href="venues.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
                     </li>
                     <!-- /.nav-second-level -->
                 </ul>
