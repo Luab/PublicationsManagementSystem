@@ -6,16 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf00a680-c2a1-4fc2-83f6-6fbaac03407c" name="Default" comment="Navigation fix&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/PublicationsManagementSystem_war_exploded/WEB-INF/web (2).xml" afterPath="" />
+    <list default="true" id="bf00a680-c2a1-4fc2-83f6-6fbaac03407c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Addpublication.jsp" afterPath="$PROJECT_DIR$/web/app/Addpublication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Author.jsp" afterPath="$PROJECT_DIR$/web/app/Author.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Publication.jsp" afterPath="$PROJECT_DIR$/web/app/Publication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Search.jsp" afterPath="$PROJECT_DIR$/web/app/Search.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/addpublication.jsp" afterPath="$PROJECT_DIR$/web/app/addpublication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/authors.jsp" afterPath="$PROJECT_DIR$/web/app/authors.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/subjects.jsp" afterPath="$PROJECT_DIR$/web/app/subjects.jsp" />
     </list>
     <ignored path="PublicationsManagementSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1264,7 +1256,7 @@
       <workItem from="1446460192882" duration="6075000" />
       <workItem from="1446567947705" duration="4381000" />
       <workItem from="1448196606215" duration="952000" />
-      <workItem from="1448197586376" duration="21467000" />
+      <workItem from="1448197586376" duration="21474000" />
     </task>
     <task id="LOCAL-00001" summary="Commited">
       <created>1448197719219</created>
@@ -1356,11 +1348,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448221551208</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Navigation fix&#10;">
+      <created>1448222130258</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1448222130258</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77080000" />
+    <option name="totallyTimeSpent" value="77087000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
