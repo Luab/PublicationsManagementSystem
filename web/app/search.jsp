@@ -67,8 +67,9 @@
           <li>
             <a class="active" href="venues.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
-
-          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
+          <%if(user.getIsSuper()){%>
+            <%if(user.getIsSuper()){%>           <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>           <%}%>
+          <%}%>
           <!-- /.nav-second-level -->
         </ul>
       </div>

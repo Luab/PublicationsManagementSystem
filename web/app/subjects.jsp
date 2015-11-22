@@ -120,6 +120,7 @@
       </div>
       <!-- /.col-lg-12 -->
     </div>
+  <div>
   <div class="row">
     <div class="col-lg-6">
       <div class="panel panel-default">
@@ -165,7 +166,7 @@
   </div>
   <!-- /.row -->
 </div>
-
+</div>
 
 <script src="../js/jquery-1.11.0.js"></script>
 
