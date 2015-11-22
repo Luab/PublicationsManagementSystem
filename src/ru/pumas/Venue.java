@@ -3,11 +3,21 @@ package ru.pumas;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Venue {
 
 	int id;
 	String name;
 
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject ret = new JSONObject();
+		ret.put("id", id);
+		ret.put("name", name);
+		return ret;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -122,6 +122,7 @@ public class DbHelper {
 				Statement.RETURN_GENERATED_KEYS);
 		statement.setInt(1, publicationId);
 		statement.setInt(2, authorId);
+		System.err.println(statement);
 		statement.execute();
 		ResultSet rs = statement.getGeneratedKeys();
 		if (!rs.next()) {
@@ -632,23 +633,35 @@ public class DbHelper {
 			Date dateUpdated, String venue, String title, String description,
 			List<String> authors, List<String> subjects) throws SQLException {
 
-		Integer venueId = venue == null ? null : getOrAddVenueId(venue);
-		int publicationId = addPublication(doi, link, dateCreated, dateUpdated,
-				venueId, title, description);
+		try {
+			
+			connection.setAutoCommit(false);
+			
+			
+			Integer venueId = venue == null ? null : getOrAddVenueId(venue);
+			int publicationId = addPublication(doi, link, dateCreated,
+					dateUpdated,
+					venueId, title, description);
 
-		if (authors != null) {
-			for (String a : authors) {
-				addPublicationAuthorRelationship(getOrAddAuthorId(a),
-						publicationId);
+			if (authors != null) {
+				for (String a : authors) {
+					addPublicationAuthorRelationship(getOrAddAuthorId(a),
+							publicationId);
+				}
 			}
-		}
-		if (subjects != null) {
-			for (String s : subjects) {
-				addPublicationSubjectRelationship(getOrAddSubjectId(s),
-						publicationId);
+			if (subjects != null) {
+				for (String s : subjects) {
+					addPublicationSubjectRelationship(getOrAddSubjectId(s),
+							publicationId);
+				}
 			}
+			return publicationId;
+		} catch(SQLException e) {
+			connection.rollback();
+			throw e;
+		} finally {
+			connection.setAutoCommit(true);
 		}
-		return publicationId;
 	}
 
 	public static PublicationSet searchPublicationSet(String s)
@@ -776,8 +789,9 @@ public class DbHelper {
 	public static VenueSet getVenueSet() throws SQLException {
 		return getVenueSet(null, null);
 	}
-	
-	public static VenueSet getVenueSet(Integer offset, Integer limit) throws SQLException {
+
+	public static VenueSet getVenueSet(Integer offset, Integer limit)
+			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.VenuesTable.TABLE_NAME, null, offset, limit);
 		return new VenueSet(connection.createStatement().executeQuery(sql));
@@ -786,8 +800,9 @@ public class DbHelper {
 	public static AuthorSet getAuthorSet() throws SQLException {
 		return getAuthorSet(null, null);
 	}
-	
-	public static AuthorSet getAuthorSet(Integer offset, Integer limit) throws SQLException {
+
+	public static AuthorSet getAuthorSet(Integer offset, Integer limit)
+			throws SQLException {
 		String sql = selectWhatFromWhere(null,
 				DbContract.AuthorsTable.TABLE_NAME, null);
 		return new AuthorSet(connection.createStatement().executeQuery(sql));
