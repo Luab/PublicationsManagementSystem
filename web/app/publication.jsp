@@ -5,6 +5,7 @@
 
 <%@ page import="ru.pumas.*" %>
 <%@ page import="java.util.Objects" %>
+<jsp:useBean id="user" scope="session" class="ru.pumas.User"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,6 +125,7 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+        <% if(user.isSuper()){%>
         <button class="btn btn-default" onclick="confirm_decision('<%=i%>')">Delete Publication</button>
         <script>function confirm_decision(publication_id){
             if(confirm("Do you want to delete the publication? This action cannot be unodne")) // this will pop up confirmation box and if yes is clicked it call servlet else return to page
@@ -134,6 +136,7 @@
             }
             return true;
         }</script>
+        <%}%>
         <div class="form-group">
             <label>Description</label>
 

@@ -1,3 +1,4 @@
+<jsp:useBean id="user" scope="session" class="ru.pumas.User" />
 <!DOCTYPE html>
 <html lang="en">
 

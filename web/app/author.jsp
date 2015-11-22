@@ -4,6 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 
 <%@ page import="ru.pumas.*" %>
+<jsp:useBean id="user" scope="session" class="ru.pumas.User" />
 <!DOCTYPE html>
 <html lang="en">
 

@@ -5,6 +5,7 @@
 
 <%@ page import="ru.pumas.*" %>
 <%@ page import="java.util.Objects" %>
+<jsp:useBean id="user" scope="session" class="ru.pumas.User" />
 <!DOCTYPE html>
 <html lang="en">
 
