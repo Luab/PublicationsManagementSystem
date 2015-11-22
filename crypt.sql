@@ -16,3 +16,5 @@ NEW.password := make_password(NEW.password);
 RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER hash_password BEFORE INSERT ON users FOR EACH ROW EXECUTE PROCEDURE user_insert_trigger();
