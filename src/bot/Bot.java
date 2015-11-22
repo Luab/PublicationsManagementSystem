@@ -128,8 +128,9 @@ public class Bot {
                     for (Rule rule : rules) {
                         Boolean x = rule.check(txt, msg);
                     }
-                    Thread.sleep(5000);
+
                 }
+                Thread.sleep(10000);
             } catch (Throwable e) {
                 try {
                     sendMessage("I am broken " + e.getMessage(), 1, 47289384);
