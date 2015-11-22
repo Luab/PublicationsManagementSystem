@@ -7,6 +7,10 @@ import sun.util.calendar.BaseCalendar;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,29 +19,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LoginServlet
+ * Class to listen for application startup and shutdown
+ *
+ * @author HBR
+ *
  */
-@WebServlet("/app/RunBot")
-public class BotServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class BotServlet implements ServletContextListener {
+    private static Logger logger = Logger.getLogger(BotServlet.class.toString());
 
-    public BotServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        logger.info("class : context destroyed");
+        Bot.turnOff();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title = request.getParameter("state");
-        if (title == null) {
-            response.sendRedirect("error.jsp?from=Something went with bot");
-        }
-        assert title != null;
-        if (title.equals("true")) {
-            Bot.run();
-            System.out.println("Bot started");
-        }
-        if (title.equals("false")) {
-            Bot.run();
-        }
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        ServletContext context = servletContextEvent.getServletContext();
+        Bot.run();
+        logger.info("myapp : context Initialized");
     }
+
+
 }

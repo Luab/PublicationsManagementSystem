@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Bootstrap Admin Theme</title>
+  <title>Publication Managment System</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -87,9 +87,6 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <div class="panel-heading">
-            Basic Form Elements
-          </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-6">
