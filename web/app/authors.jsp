@@ -130,7 +130,6 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-    </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default">
@@ -195,7 +194,7 @@
 <script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-
+</div>
 </body>
 
 </html>

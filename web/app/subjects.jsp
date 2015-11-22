@@ -111,7 +111,7 @@
         offset = 0;
       }
     }%>
-  < id="page-wrapper">
+  <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
         <%
@@ -196,7 +196,7 @@
 <script src="../js/sb-admin-2.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-
+</div>
 </body>
 
 </html>

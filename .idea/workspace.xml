@@ -6,20 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf00a680-c2a1-4fc2-83f6-6fbaac03407c" name="Default" comment="Pre relase fixes">
+    <list default="true" id="bf00a680-c2a1-4fc2-83f6-6fbaac03407c" name="Default" comment="Navigation fix&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/PublicationsManagementSystem_war_exploded/WEB-INF/web (2).xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/Bot.java" afterPath="$PROJECT_DIR$/src/bot/Bot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/addPublication.jsp" afterPath="$PROJECT_DIR$/web/app/addPublication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/author.jsp" afterPath="$PROJECT_DIR$/web/app/author.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Addpublication.jsp" afterPath="$PROJECT_DIR$/web/app/Addpublication.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Author.jsp" afterPath="$PROJECT_DIR$/web/app/Author.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Publication.jsp" afterPath="$PROJECT_DIR$/web/app/Publication.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/Search.jsp" afterPath="$PROJECT_DIR$/web/app/Search.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/addpublication.jsp" afterPath="$PROJECT_DIR$/web/app/addpublication.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/authors.jsp" afterPath="$PROJECT_DIR$/web/app/authors.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/publication.jsp" afterPath="$PROJECT_DIR$/web/app/publication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/result.jsp" afterPath="$PROJECT_DIR$/web/app/result.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/search.jsp" afterPath="$PROJECT_DIR$/web/app/search.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/subject.jsp" afterPath="$PROJECT_DIR$/web/app/subject.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/subjects.jsp" afterPath="$PROJECT_DIR$/web/app/subjects.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/template.jsp" afterPath="$PROJECT_DIR$/web/app/template.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/venue.jsp" afterPath="$PROJECT_DIR$/web/app/venue.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/venues.jsp" afterPath="$PROJECT_DIR$/web/app/venues.jsp" />
     </list>
     <ignored path="PublicationsManagementSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +41,8 @@
       <file leaf-file-name="authors.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app/authors.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.576923">
-              <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+            <state vertical-scroll-proportion="-14.653846">
+              <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -65,18 +61,18 @@
       <file leaf-file-name="subject.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.576923">
-              <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+            <state vertical-scroll-proportion="-3.6538463">
+              <caret line="104" column="25" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subjects.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="subjects.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app/subjects.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.576923">
-              <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.64084506">
+              <caret line="198" column="6" selection-start-line="198" selection-start-column="6" selection-end-line="198" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -102,11 +98,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="venues.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="venues.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app/venues.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26551723">
+            <state vertical-scroll-proportion="-8.884615">
               <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddPublicationServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="56" selection-start-line="62" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -127,16 +133,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.576923">
               <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="author.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app/author.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.576923">
-              <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -202,15 +198,15 @@
         <option value="$PROJECT_DIR$/src/bot/Bot.java" />
         <option value="$PROJECT_DIR$/web/app/addPublication.jsp" />
         <option value="$PROJECT_DIR$/web/app/author.jsp" />
-        <option value="$PROJECT_DIR$/web/app/authors.jsp" />
         <option value="$PROJECT_DIR$/web/app/publication.jsp" />
         <option value="$PROJECT_DIR$/web/app/result.jsp" />
         <option value="$PROJECT_DIR$/web/app/search.jsp" />
         <option value="$PROJECT_DIR$/web/app/subject.jsp" />
-        <option value="$PROJECT_DIR$/web/app/subjects.jsp" />
         <option value="$PROJECT_DIR$/web/app/template.jsp" />
         <option value="$PROJECT_DIR$/web/app/venue.jsp" />
         <option value="$PROJECT_DIR$/web/app/venues.jsp" />
+        <option value="$PROJECT_DIR$/web/app/authors.jsp" />
+        <option value="$PROJECT_DIR$/web/app/subjects.jsp" />
       </list>
     </option>
   </component>
@@ -349,6 +345,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicationsManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pumas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1250,7 +1264,7 @@
       <workItem from="1446460192882" duration="6075000" />
       <workItem from="1446567947705" duration="4381000" />
       <workItem from="1448196606215" duration="952000" />
-      <workItem from="1448197586376" duration="20881000" />
+      <workItem from="1448197586376" duration="21467000" />
     </task>
     <task id="LOCAL-00001" summary="Commited">
       <created>1448197719219</created>
@@ -1336,11 +1350,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448219765170</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Navigation fix&#10;">
+      <created>1448221551208</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1448221551208</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76494000" />
+    <option name="totallyTimeSpent" value="77080000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1357,7 +1377,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32683983" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32683983" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
@@ -1409,7 +1429,8 @@
     <MESSAGE value="Bot timer fixed" />
     <MESSAGE value="Author pagination" />
     <MESSAGE value="Pre relase fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pre relase fixes" />
+    <MESSAGE value="Navigation fix&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Navigation fix&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1740,14 +1761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app/addPublication.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.230769">
@@ -1760,14 +1773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.576923">
           <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/authors.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.576923">
-          <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1796,22 +1801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.576923">
-          <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app/subjects.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.576923">
-          <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app/template.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.576923">
@@ -1830,8 +1819,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app/venues.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26551723">
+        <state vertical-scroll-proportion="-8.884615">
           <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/pumas/AddPublicationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="56" selection-start-line="62" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/authors.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.653846">
+          <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/subject.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6538463">
+          <caret line="104" column="25" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app/subjects.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64084506">
+          <caret line="198" column="6" selection-start-line="198" selection-start-column="6" selection-end-line="198" selection-end-column="6" />
           <folding />
         </state>
       </provider>
