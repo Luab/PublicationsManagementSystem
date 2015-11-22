@@ -5,9 +5,9 @@
              version="6">
 
     <module id="PublicationsManagementSystem-Web">
-    <web>
-        <web-uri>web.war</web-uri>
-        <context-root>PublicationsManagementSystemWeb</context-root>
-    </web>
-</module>
+        <web>
+            <web-uri>web.war</web-uri>
+            <context-root>PublicationsManagementSystemWeb</context-root>
+        </web>
+    </module>
 </application>

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Publication Managment System</title>
+  <title>Publication Managment System 20% cooler</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
             <a class="active" href="venues.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
 
-          <li><a href="addpublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a></li>
+          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
           <!-- /.nav-second-level -->
         </ul>
       </div>
@@ -87,6 +87,9 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
+          <div class="panel-heading">
+            Basic Form Elements
+          </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-6">

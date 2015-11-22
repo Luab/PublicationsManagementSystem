@@ -6,6 +6,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="PublicationsManagementSystem" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="json-20131018" />
+          <element id="file-copy" path="$PROJECT_DIR$/org.postgresql.jdbc4-8.3-603.jar" />
+          <element id="library" level="project" name="org.postgresql.jdbc4-8.3-603" />
+        </element>
       </element>
       <element id="library" level="module" name="postgresql-9.4-1203.jdbc41.jar" module-name="PublicationsManagementSystem" />
       <element id="javaee-facet-resources" facet="PublicationsManagementSystem/web/Web" />
