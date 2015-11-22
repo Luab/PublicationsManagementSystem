@@ -35,7 +35,7 @@ public class Bot {
      * @param replyTo may be <code>null</code>
      * @param chatId
      */
-    static void sendMessage(String text, Integer replyTo, int chatId) throws IOException {
+    public static void sendMessage(String text, Integer replyTo, int chatId) throws IOException {
         String s = "https://api.telegram.org/bot"+ BuildVars.BOT_TOKEN+"/sendMessage?";
         QueryString q = new QueryString();
         // chat_id=47289384&text=Test&reply_to_message_id=52

@@ -9,4 +9,7 @@
     <listener>
         <listener-class>ru.pumas.BotServlet</listener-class>
     </listener>
+    <listener>
+        <listener-class>ru.pumas.ParseServlet</listener-class>
+    </listener>
 </web-app>

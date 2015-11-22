@@ -149,7 +149,7 @@
                             </thead>
                             <tbody>
                             <%
-                                Integer x = 1;
+                                Integer x = offset;
                                 while (auths.next()){
                                 Author auth = auths.getAuthor();
                             %>

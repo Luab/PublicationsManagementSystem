@@ -73,5 +73,6 @@
     <orderEntry type="library" name="html5shiv" level="application" />
     <orderEntry type="library" name="respond" level="application" />
     <orderEntry type="library" name="json-20131018" level="project" />
+    <orderEntry type="library" name="jsoup-1.8.3" level="project" />
   </component>
 </module>

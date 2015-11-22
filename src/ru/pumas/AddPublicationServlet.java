@@ -56,6 +56,8 @@ public class AddPublicationServlet extends HttpServlet {
 					new Date(format.parse(dateUpdated).getTime()), venue, title,
 					description,
 					authors, subjects);
+			response.sendRedirect(
+					request.getContextPath() + "/app/publication.jsp?id=" + id);
 		} catch (SQLException e) {
 			response.sendRedirect(request.getContextPath()
 					+ "error.jsp?from=" + e.getMessage());
@@ -64,8 +66,7 @@ public class AddPublicationServlet extends HttpServlet {
 					+ "error.jsp?from=wrong date format");
 			e.printStackTrace();
 		}
-		response.sendRedirect(
-				request.getContextPath() + "/app/publication.jsp?id=" + id);
+
 	}
 
 }

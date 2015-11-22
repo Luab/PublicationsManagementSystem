@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/app/search.jsp");
 		} else {
 			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=invalid login");
+					+ "/error.jsp?from=invalid%20login");
 		}
 	}
 

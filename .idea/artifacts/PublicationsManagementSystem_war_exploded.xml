@@ -10,6 +10,7 @@
           <element id="library" level="project" name="json-20131018" />
           <element id="file-copy" path="$PROJECT_DIR$/org.postgresql.jdbc4-8.3-603.jar" />
           <element id="library" level="project" name="org.postgresql.jdbc4-8.3-603" />
+          <element id="library" level="project" name="jsoup-1.8.3" />
         </element>
       </element>
       <element id="library" level="module" name="postgresql-9.4-1203.jdbc41.jar" module-name="PublicationsManagementSystem" />

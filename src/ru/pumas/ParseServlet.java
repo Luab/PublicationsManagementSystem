@@ -3,18 +3,13 @@ package ru.pumas;
 import bot.Bot;
 import parsing.EverydayParser;
 
-import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.http.Part;
+import java.util.logging.Logger;
 
 /**
- * Class to listen for application startup and shutdown
- *
- * @author HBR
- *
+ * Created by Lua_b on 22.11.2015.
  */
-public class BotServlet implements ServletContextListener {
+public class ParseServlet {
     private static Logger logger = Logger.getLogger(BotServlet.class.toString());
 
     private Thread myThread = null;
@@ -25,8 +20,8 @@ public class BotServlet implements ServletContextListener {
 
                 @Override
                 public void run() {
-                    Bot bot = new Bot();
-                    Bot.run();
+                    EverydayParser parser = new EverydayParser();
+                    parser.run();
                 }
             });
             myThread.start();
