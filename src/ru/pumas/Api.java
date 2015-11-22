@@ -17,7 +17,7 @@ import org.json.JSONObject;
 /**
  * Servlet implementation class Api
  */
-@WebServlet("/Api")
+@WebServlet("/API")
 public class Api extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

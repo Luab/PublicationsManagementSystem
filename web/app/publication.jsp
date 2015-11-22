@@ -249,7 +249,7 @@
                                                             <tbody>
                                                             <%
                                                                 x=1;
-                                                                PublicationSet rel = DbHelper.getRelatedPublicationsByAuthor(i);                                                                while (rel.next()) {
+                                                                PublicationSet rel = DbHelper.getRelatedPublicationsByTimeAndSubject(i);                                                                while (rel.next()) {
                                                                     Publication publication = rel.getPublication();
                                                                     Integer pid = publication.getId();
                                                                     %>

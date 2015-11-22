@@ -59,12 +59,8 @@ public class AddPublicationServlet extends HttpServlet {
 			response.sendRedirect(
 					request.getContextPath() + "/app/publication.jsp?id=" + id);
 		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=" + e.getMessage());
 			e.printStackTrace();
 		} catch (ParseException e) {
-			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=wrong date format");
 			e.printStackTrace();
 		}
 
