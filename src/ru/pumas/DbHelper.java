@@ -95,6 +95,44 @@ public class DbHelper {
 		}
 	}
 
+	public static User getUserByLoginPassword(String login, String password)
+			throws SQLException {
+		String sql = selectWhatFromWhere(null, DbContract.UsersTable.TABLE_NAME,
+				DbContract.UsersTable.COLUMN_LOGIN + " = ? AND "
+						+ DbContract.UsersTable.COLUMN_PASSWORD
+						+ " = crypt(?, " + DbContract.UsersTable.COLUMN_PASSWORD
+						+ ")");
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, login);
+		statement.setString(2, password);
+		ResultSet rs = statement.executeQuery();
+		System.err.println(statement);
+		if (!rs.next()) {
+			return null;
+		}
+		return User.from(rs);
+	}
+
+	public static int addUser(String login, String password, boolean isSuper)
+			throws SQLException {
+		String sql = insertIntoValuesQuestionMarks(
+				DbContract.UsersTable.TABLE_NAME,
+				new String[] { DbContract.UsersTable.COLUMN_LOGIN,
+						DbContract.UsersTable.COLUMN_PASSWORD,
+						DbContract.UsersTable.COLUMN_IS_SUPER });
+		PreparedStatement statement = connection.prepareStatement(sql,
+				Statement.RETURN_GENERATED_KEYS);
+		statement.setString(1, login);
+		statement.setString(2, password);
+		statement.setBoolean(3, isSuper); // trigger should hash
+		statement.execute();
+		ResultSet rs = statement.getGeneratedKeys();
+		if (!rs.next()) {
+			throw new SQLException("Can't get generated key");
+		}
+		return rs.getInt(1);
+	}
+
 	public static int addAuthor(String author) throws SQLException {
 		String sql = "INSERT INTO " +
 				DbContract.AuthorsTable.TABLE_NAME + " (" +
@@ -634,10 +672,9 @@ public class DbHelper {
 			List<String> authors, List<String> subjects) throws SQLException {
 
 		try {
-			
+
 			connection.setAutoCommit(false);
-			
-			
+
 			Integer venueId = venue == null ? null : getOrAddVenueId(venue);
 			int publicationId = addPublication(doi, link, dateCreated,
 					dateUpdated,
@@ -656,7 +693,7 @@ public class DbHelper {
 				}
 			}
 			return publicationId;
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			connection.rollback();
 			throw e;
 		} finally {

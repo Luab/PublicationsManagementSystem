@@ -39,12 +39,10 @@ public class AddPublicationServlet extends HttpServlet {
         }*/
         try {
             id = DbHelper.addPublication(DOI, null, java.sql.Date.valueOf(datecreated), java.sql.Date.valueOf(dateupdated), null, title, description);
-            response.sendRedirect(request.getContextPath() + "/app/publication.jsp?id=" + id);
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/app/error.jsp?from=" + e.getMessage());
+            response.sendRedirect(request.getContextPath() + "error.jsp?from=Please fill all required forms");
         }
-
+        response.sendRedirect("/app/publication.jsp?id="+id);
     }
 
 }
