@@ -16,9 +16,10 @@
     <title>hOi!</title>
 </head>
 <body>
-<jsp:text>Smtheng went roooong :c
+<text font-family="comic sans">Smtheng went roooong :c
 Here's some info:
-<%=request.getParameter("from")%></jsp:text>
+<%=request.getParameter("from")%></text>
+
 <img class="shake-me" src="img/tem.png"/>
 <audio loop>
   <source src="audio/dogsong.ogg">

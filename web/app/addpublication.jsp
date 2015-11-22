@@ -128,11 +128,11 @@
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea name="Description" class="form-control" rows="3"></textarea>
+                <textarea name="description" class="form-control" rows="3"></textarea>
               </div>
               <div class="123">
                 <label>Authors*</label>
-                <input name="Authors" class="form-control" placeholder="Enter author name">
+                <input name="authors" class="form-control" placeholder="Enter author name">
               </div>
               <div class="123">
                 <label>Date updated* yyyy-mm-dd</label>
@@ -144,7 +144,7 @@
               </div>
               <div class="form-group">
                 <label>Subjects</label>
-                <input name="Subjects" class="form-control" placeholder="Enter subject">
+                <input name="subjects" class="form-control" placeholder="Enter subject">
               </div>
               <div class="form-group">
                 <label>DOI</label>

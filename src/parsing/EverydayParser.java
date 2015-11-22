@@ -16,34 +16,37 @@ public class EverydayParser {
     private Boolean isOn;
 
     public void run() {
-
+        try {
+            Bot.sendMessage("runned", 1, 47289384);
             isOn = true;
             while (isOn) {
-                try {
-                    String path;
-                    path = "update.xml";
-                    Bot.sendMessage("Getting links.",1,47289384);
 
-                    Real.getUpdates("update.xml");
+                String path;
+                path = "update.xml";
+                Bot.sendMessage("Getting links.", 1, 47289384);
 
-                    Bot.sendMessage("Trying to parse.",1,47289384);
+                Real.getUpdates("update.xml");
 
-                    if (ParseUpdates.openFile(path)) {
+                Bot.sendMessage("Trying to parse.", 1, 47289384);
 
-                        Bot.sendMessage("Parsing.",1,47289384);
-                        ParseUpdates.Parse();
+                if (ParseUpdates.openFile(path)) {
+
+                    Bot.sendMessage("Parsing.", 1, 47289384);
+                    ParseUpdates.Parse();
 
 
-                        Bot.sendMessage("Finished.",1,47289384);
-                        Thread.sleep(86400000);
+                    Bot.sendMessage("Finished.", 1, 47289384);
+                    Thread.sleep(86400000);
 
-                    }
-                } catch (Exception e) {
+                }
+            }
+        }
+                 catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
-    }
+
 
 
 

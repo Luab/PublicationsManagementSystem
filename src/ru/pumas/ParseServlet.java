@@ -4,6 +4,7 @@ import bot.Bot;
 import parsing.EverydayParser;
 
 import javax.servlet.ServletContextEvent;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -15,6 +16,11 @@ public class ParseServlet {
     private Thread myThread = null;
 
     public void contextInitialized(ServletContextEvent sce) {
+        try {
+            Bot.sendMessage("Content initialized",1,47289384);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if ((myThread == null) || (!myThread.isAlive())) {
             myThread = new Thread(new Runnable() {
 

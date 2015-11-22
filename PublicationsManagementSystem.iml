@@ -74,5 +74,6 @@
     <orderEntry type="library" name="jsoup-1.8.3" level="project" />
     <orderEntry type="library" name="respond" level="application" />
     <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" scope="TEST" name="postgresql-9.4-1203.jdbc41" level="project" />
   </component>
 </module>
