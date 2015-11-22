@@ -79,6 +79,9 @@ public class Bot {
                         Publication publication=result.getPublication();
                         respond+="["+publication.getTitle()+"]"+"("+publication.getLink()+")\n";
                     }
+                    if(respond.equals("")){
+                        respond="Nothing found. Sorry.";
+                    }
                     sendMarkdownMessage(respond,msg.getMessageId(),msg.getChat().getId());
                     return true;
                 }
