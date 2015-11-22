@@ -140,14 +140,12 @@
               <tbody>
               <%
                 Integer x = 1;
-                Integer pid =0;
-                PublicationSet publications = DbHelper.getPublicationSetByVenueId(i); //TODO: Fill it in
-                while (publications.next()){
-                  Publication publ = publications.getPublication();
-                  pid = publ.getId();                %>
+                while (ven.next()){
+                  Venue v = ven.getVenue();
+              %>
               <tr>
                 <td><%out.print(x);%></td>
-                <td><a href="publication.jsp?id=<%=pid%>"><%=publ.getTitle()%></a> </td>
+                <td><a href="venue.jsp?id=<%=v.getId()%>"><%=v.getName()%></a> </td>
               </tr>
               <%
                   x++;
