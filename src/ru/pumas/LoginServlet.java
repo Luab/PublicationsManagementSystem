@@ -1,6 +1,8 @@
 package ru.pumas;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,22 +16,31 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("login");
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		if(name.equals("student@innopolis") && password.equals("student") ) {
+		User user = null;
+		try {
+			user = DbHelper.getUserByLoginPassword(login, password);
+		} catch (SQLException e) {
+			response.sendRedirect(request.getContextPath()
+					+ "error.jsp?from=\"internal error\"");
+			e.printStackTrace();
+		}
+		if (user != null) {
 			HttpSession session = request.getSession(true);
-			session.setAttribute("user", name);
-			System.err.println(request.getContextPath());
+			session.setAttribute("user", user);
 			response.sendRedirect(request.getContextPath() + "/app/search.jsp");
 		} else {
-			response.sendRedirect("error.jsp?from=\"invalid login\"");
+			response.sendRedirect(request.getContextPath()
+					+ "error.jsp?from=\"invalid login\"");
 		}
 	}
 

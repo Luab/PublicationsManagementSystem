@@ -5,6 +5,24 @@ public class DbContract {
 	private DbContract() {
 	}
 
+	static final class UsersTable {
+		static final String TABLE_NAME = "users";
+
+		public static final String COLUMN_ID = "user_id";
+		public static final String COLUMN_LOGIN = "login";
+		public static final String COLUMN_PASSWORD = "password";
+		public static final String COLUMN_IS_SUPER = "is_super";
+
+		public static final String FULL_COLUMN_ID = TABLE_NAME + "."
+				+ COLUMN_ID;
+		public static final String FULL_COLUMN_LOGIN = TABLE_NAME + "."
+				+ COLUMN_LOGIN;
+		public static final String FULL_COLUMN_PASSWORD = TABLE_NAME + "."
+				+ COLUMN_PASSWORD;
+		public static final String FULL_COLUMN_IS_SUPER = TABLE_NAME + "."
+				+ COLUMN_IS_SUPER;
+	}
+
 	static final class AuthorsTable {
 		static final String TABLE_NAME = "author";
 
