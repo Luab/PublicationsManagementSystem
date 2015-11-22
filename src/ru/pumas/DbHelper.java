@@ -697,8 +697,26 @@ public class DbHelper {
 			connection.rollback();
 			throw e;
 		} finally {
+			connection.commit();
 			connection.setAutoCommit(true);
 		}
+	}
+
+	public static int findOrMakePublication(String doi, String link,
+			Date dateCreated,
+			Date dateUpdated, String venue, String title, String description,
+			List<String> authors, List<String> subjects) throws SQLException {
+		String sql = selectWhatFromWhere(DbContract.PublicationsTable.COLUMN_ID,
+				DbContract.PublicationsTable.TABLE_NAME,
+				DbContract.PublicationsTable.COLUMN_LINK + " = ?");
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, link);
+		ResultSet rs = statement.executeQuery();
+		if (rs.next()) {
+			return rs.getInt(DbContract.PublicationsTable.COLUMN_ID);
+		}
+		return makePublication(doi, link, dateCreated, dateUpdated, venue,
+				title, description, authors, subjects);
 	}
 
 	public static PublicationSet searchPublicationSet(String s)
