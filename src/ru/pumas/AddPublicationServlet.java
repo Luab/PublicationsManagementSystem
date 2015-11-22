@@ -28,45 +28,59 @@ public class AddPublicationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
-		String description = request.getParameter("description");
-
-		List<String> authors = new ArrayList<String>();
-		authors.add(request.getParameter("authors"));
-
-		List<String> subjects = new ArrayList<String>();
-		subjects.add(request.getParameter("subjects"));
-
-		String doi = request.getParameter("DOI");
-		String venue = request.getParameter("venue");
-		String dateCreated = request.getParameter("datecreated");
-		String dateUpdated = request.getParameter("dateupdated");
-		String link = request.getParameter("link");
-		Integer id = 1;
-		/*
-		 * if
-		 * (title.equals(null)||description.equals(null)||authors.equals(null)||
-		 * subjects.equals(null)){ response.sendRedirect(
-		 * "error.jsp?from=Please fill all required forms"); }
-		 */
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 		try {
-			id = DbHelper.makePublication(doi, link,
-					new Date(format.parse(dateCreated).getTime()),
-					new Date(format.parse(dateUpdated).getTime()), venue, title,
-					description,
-					authors, subjects);
+			String title = request.getParameter("title");
+			if (title == null) {
+				throw new IllegalStateException("nulll_title");
+			}
+			String description = request.getParameter("description");
+
+			List<String> authors = new ArrayList<String>();
+			String a = request.getParameter("authors");
+			if (a == null) {
+				throw new IllegalStateException("null_authro");
+			}
+			authors.add(a);
+
+			List<String> subjects = new ArrayList<String>();
+			String s = request.getParameter("subjects");
+			if (s != null) {
+				subjects.add(s);
+			}
+
+			String doi = request.getParameter("DOI");
+			String venue = request.getParameter("venue");
+			String dateCreated = request.getParameter("datecreated");
+			String dateUpdated = request.getParameter("dateupdated");
+			String link = request.getParameter("link");
+			Integer id = 1;
+			/*
+			 * if (title.equals(null)||description.equals(null)||authors.equals(
+			 * null)|| subjects.equals(null)){ response.sendRedirect(
+			 * "error.jsp?from=Please fill all required forms"); }
+			 */
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+			try {
+				id = DbHelper.makePublication(doi, link,
+						new Date(format.parse(dateCreated).getTime()),
+						new Date(format.parse(dateUpdated).getTime()), venue,
+						title,
+						description,
+						authors, subjects);
+			} catch (SQLException e) {
+				response.sendRedirect(request.getContextPath()
+						+ "/error.jsp?from=" + e.getMessage());
+				e.printStackTrace();
+			} catch (ParseException e) {
+				response.sendRedirect(request.getContextPath()
+						+ "/error.jsp?from=wrong date format");
+				e.printStackTrace();
+			}
 			response.sendRedirect(
 					request.getContextPath() + "/app/publication.jsp?id=" + id);
-		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=" + e.getMessage());
-			e.printStackTrace();
-		} catch (ParseException e) {
-			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=wrong date format");
-			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			response.sendRedirect(request.getContextPath() + "/error.jsp?from="
+					+ e.getMessage());
 		}
-
 	}
 }
