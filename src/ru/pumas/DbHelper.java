@@ -859,7 +859,7 @@ public class DbHelper {
 	public static AuthorSet getAuthorSet(Integer offset, Integer limit)
 			throws SQLException {
 		String sql = selectWhatFromWhere(null,
-				DbContract.AuthorsTable.TABLE_NAME, null);
+				DbContract.AuthorsTable.TABLE_NAME, null, offset, limit);
 		return new AuthorSet(connection.createStatement().executeQuery(sql));
 	}
 
