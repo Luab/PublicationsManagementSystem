@@ -100,7 +100,17 @@
         <!-- /.navbar-static-side -->
     </nav>
 
-
+    <%String parsed = request.getParameter("offset");
+        Integer offset;
+        final Integer limit = 10;
+        if (parsed == null) {
+            offset = 0;
+        } else {
+            offset = Integer.parseInt(request.getParameter("offset"));
+            if (offset < 0) {
+                offset = 0;
+            }
+        }%>
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
@@ -114,9 +124,9 @@
                     else {
                         i = Integer.parseInt(par);
                     }
-                    AuthorSet auths = DbHelper.getAuthorSet();
+                    AuthorSet auths = DbHelper.getAuthorSet(offset,limit);
                 %>
-                <h1 class="page-header">Venues</h1>
+                <h1 class="page-header">Authors</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -152,6 +162,12 @@
                                 }
                             %>
                             </tbody>
+                            <button type="submit" class="btn btn-default"><a
+                                    href="authors.jsp?offset=<%=offset-limit%>">Previous
+                                page</a></button>
+                            <button type="submit" class="btn btn-default"><a
+                                    href="authors.jsp?offset=<%=offset+limit%>">Next
+                                page</a></button>
                         </table>
                     </div>
                     <!-- /.table-responsive -->
