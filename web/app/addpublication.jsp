@@ -7,6 +7,7 @@
 
 <%@page import="ru.pumas.Author"%>
 <%@page import="ru.pumas.Subject"%>
+<jsp:useBean id="user" scope="session" class="ru.pumas.User" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +95,7 @@
             <a class="active" href="venue.jsp"><i class="fa fa-book fa-fw"></i>Venues</a>
           </li>
 
-          <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>
+            <%if(user.getIsSuper()){%>           <li><a href="addPublication.jsp"><i class="fa  fa-plus-square fa-fw">Add Publication</i> </a> </li>           <%}%>
           <!-- /.nav-second-level -->
         </ul>
       </div>
@@ -134,11 +135,11 @@
                 <input name="Authors" class="form-control" placeholder="Enter author name">
               </div>
               <div class="123">
-                <label>Date updated*</label>
+                <label>Date updated* yyyy-mm-dd</label>
                 <input name="dateupdated" class="form-control" placeholder="Enter date">
               </div>
               <div class="123">
-                <label>Date created*</label>
+                <label>Date created* yyyy-mm-dd</label>
                 <input name="datecreated" class="form-control" placeholder="Enter date">
               </div>
               <div class="form-group">
