@@ -52,8 +52,9 @@ public class AddPublicationServlet extends HttpServlet {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 		try {
 			id = DbHelper.makePublication(doi, link,
-					(Date) format.parse(dateCreated),
-					(Date) format.parse(dateUpdated), venue, title, description,
+					new Date(format.parse(dateCreated).getTime()),
+					new Date(format.parse(dateUpdated).getTime()), venue, title,
+					description,
 					authors, subjects);
 		} catch (SQLException e) {
 			response.sendRedirect(request.getContextPath()
