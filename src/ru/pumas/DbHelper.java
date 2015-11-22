@@ -95,6 +95,18 @@ public class DbHelper {
 		}
 	}
 
+	/**
+	 * Gets instance of {@link User} from database with given login and
+	 * password. Returns <code>null</code> if no such pair found.
+	 * 
+	 * @param login
+	 *            user's login
+	 * @param password
+	 *            user's plain-text password
+	 * @return <code>User</code> object or <code>null</code> if no such pair
+	 *         found
+	 * @throws SQLException
+	 */
 	public static User getUserByLoginPassword(String login, String password)
 			throws SQLException {
 		String sql = selectWhatFromWhere(null, DbContract.UsersTable.TABLE_NAME,
@@ -113,6 +125,21 @@ public class DbHelper {
 		return User.from(rs);
 	}
 
+	/**
+	 * Creates new {@link User} in database with given information. Returns id
+	 * or throws <code>SQLException</code>.
+	 * 
+	 * @param login
+	 *            user's login
+	 * @param password
+	 *            user's password in plain-text
+	 * @param isSuper
+	 *            is user a <i>super</i>-user?
+	 * @return database id of new user
+	 * @throws SQLException
+	 * 
+	 * @see {@link User#isSuper()}
+	 */
 	public static int addUser(String login, String password, boolean isSuper)
 			throws SQLException {
 		String sql = insertIntoValuesQuestionMarks(
@@ -133,6 +160,15 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
+	/**
+	 * Adds new author with given author name. Returns id or throws
+	 * <code>SQLException</code>.
+	 * 
+	 * @param author
+	 *            author name
+	 * @return id of new author in database
+	 * @throws SQLException
+	 */
 	public static int addAuthor(String author) throws SQLException {
 		String sql = "INSERT INTO " +
 				DbContract.AuthorsTable.TABLE_NAME + " (" +
@@ -148,6 +184,17 @@ public class DbHelper {
 		return rs.getInt(3); // TODO: why 3 ???
 	}
 
+	/**
+	 * Adds <i>Who wrote publication</i> record. Returns id or throws
+	 * <code>SQLException</code>.
+	 * 
+	 * @param authorId
+	 *            id of author who wrote publication
+	 * @param publicationId
+	 *            id of publication
+	 * @return id of the relationship
+	 * @throws SQLException
+	 */
 	public static int addPublicationAuthorRelationship(int authorId,
 			int publicationId) throws SQLException {
 		String sql = "INSERT INTO " +
@@ -169,6 +216,17 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
+	/**
+	 * Adds <i>Publication on what subject?</i> record. Returns id of
+	 * relationship or throws <code>SQLException</code>.
+	 * 
+	 * @param subjectId
+	 *            id of subject
+	 * @param publicationId
+	 *            id of publication
+	 * @return id of relationship
+	 * @throws SQLException
+	 */
 	public static int addPublicationSubjectRelationship(int subjectId,
 			int publicationId) throws SQLException {
 		String sql = "INSERT INTO "
@@ -190,6 +248,17 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
+	/**
+	 * Adds <i>Keyword in what publication?</i> record. Returns id or throws
+	 * <code>SQLExcpetion</code>.
+	 * 
+	 * @param keywordId
+	 *            id of keyword
+	 * @param publicationId
+	 *            id of publication
+	 * @return id of relationship
+	 * @throws SQLException
+	 */
 	public static int addPublicationKeywordRelationship(int keywordId,
 			int publicationId) throws SQLException {
 		String sql = "INSERT INTO "
@@ -212,6 +281,12 @@ public class DbHelper {
 		return rs.getInt(1);
 	}
 
+	/**
+	 * Adds subject with given name. 
+	 * @param subject
+	 * @return
+	 * @throws SQLException
+	 */
 	public static int addSubject(String subject) throws SQLException {
 		String sql = "INSERT INTO " + DbContract.SubjectsTable.TABLE_NAME + " ("
 				+
@@ -697,7 +772,6 @@ public class DbHelper {
 			connection.rollback();
 			throw e;
 		} finally {
-			connection.commit();
 			connection.setAutoCommit(true);
 		}
 	}
@@ -727,15 +801,6 @@ public class DbHelper {
 	public static PublicationSet searchPublicationSet(String s, Integer offset,
 			Integer limit)
 					throws SQLException {
-		/*
-		 * SELECT P.publication_id, ts_headline(P.publication_title,q) as
-		 * Publication_title, P.datePublished, P.dateUpdated,
-		 * ts_headline(P.description,q) as Publication_description,
-		 * ts_headline(authors_for_publicationID(P.publication_ID),q) as
-		 * Publication_authors, P.venue_id, ts_rank_cd(P.searchable, q) AS rank
-		 * FROM publication AS p, to_tsquery('XXX') AS q WHERE P.searchable @@ q
-		 * ORDER BY rank DESC LIMIT 50 ;
-		 */
 
 		String sql = selectWhatFromWhere(new String[] {
 				DbContract.PublicationsTable.COLUMN_ID,
