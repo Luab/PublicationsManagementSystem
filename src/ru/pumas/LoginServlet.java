@@ -30,10 +30,10 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = DbHelper.getUserByLoginPassword(login, password);
 		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=\"internal error\"");
-			e.printStackTrace();
-			return;
+		response.sendRedirect(request.getContextPath()
+					+ "/error.jsp?from="+e.getMessage());
+		e.printStackTrace();
+		return;
 		}
 		if (user != null) {
 			HttpSession session = request.getSession(true);
@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/app/search.jsp");
 		} else {
 			response.sendRedirect(request.getContextPath()
-					+ "/error.jsp?from=\"invalid login\"");
+					+ "/error.jsp?from=invalid login");
 		}
 	}
 
