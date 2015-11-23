@@ -71,7 +71,7 @@ public class Real {
         for (int i = 0; i < linksArray.size(); i++) {
             linksArray.set(i, linksArray.get(i).substring(0, linksArray.get(i).length() - 1) + "&max_results=500");
 
-            Bot.sendMessage("Starting Downloading " + i + " Element",1,47289384);
+            Bot.sendMessage("Starting Downloading " + (i) + " Element",1,47289384);
 
             Bot.sendMessage(linksArray.get(i),1,47289384);
 
