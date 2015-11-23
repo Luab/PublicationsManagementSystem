@@ -1,6 +1,9 @@
 README.txt
 
 This is readme for PHASE 2 project
+---
+You can create tables with CREATE.sql
+You can found  sample queries, whic are build with DBHelper in queries.sql
 
 ---
 How to startup server?
