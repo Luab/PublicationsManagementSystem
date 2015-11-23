@@ -1,3 +1,5 @@
+package parsing;
+
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -28,7 +30,7 @@ public class ParseFromFile {
 
 	/**
 	 * Open a file from path. Also opens a BufferedInputStream from it in
-	 * ParseFromFile.java class
+	 * parsing.ParseFromFile.java class
 	 *
 	 * @param path
 	 *            Is a path of file
@@ -47,7 +49,7 @@ public class ParseFromFile {
 	}
 
 	/**
-	 * Parsing data from BufferedInputStream in ParseFromFile.java Parse() get
+	 * Parsing data from BufferedInputStream in parsing.ParseFromFile.java Parse() get
 	 * all elements with tag "record" and
 	 *
 	 * @throws ParserConfigurationException
