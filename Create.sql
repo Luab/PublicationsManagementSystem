@@ -42,15 +42,6 @@ CREATE TABLE written_on (
   publication_id INTEGER REFERENCES publication ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE keyword (
-  keyword_id     SERIAL PRIMARY KEY ,
-  keyword        TEXT 
-);
-
-CREATE TABLE keyword_in (
-  keyword_id     INTEGER REFERENCES keyword ON UPDATE CASCADE ON DELETE CASCADE,
-  publication_id INTEGER REFERENCES publication ON UPDATE CASCADE ON DELETE CASCADE
-);
 
 -----------------------
 --TRIGGERS
